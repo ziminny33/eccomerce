@@ -1,0 +1,24 @@
+.#{$prefix} { 
+
+ 
+    &-item {
+        font-family: "ProximaNovaMedium" !important;
+    }
+}
+
+.glider-track {
+    margin-left: 8px !important;
+    font-size: 18px;
+    color: $colorGray__2;
+ 
+}
+
+ 
+
+.glider-track .active {
+    color: $colorBlack !important;
+}
+
+.glider-wrapper {
+    margin-bottom: 16px !important;
+}

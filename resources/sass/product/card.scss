@@ -1,0 +1,111 @@
+
+.#{$prefix} {
+    &-container {
+        display: flex;
+        flex-wrap: wrap;
+        padding: 8px;
+        @media (max-width:$breakpointTwo) and (min-width:$breakpointOne) {
+ 
+            justify-content: space-between;
+  
+       }
+    }
+    &-cart-item {
+        position: relative; 
+        width: 200px;
+        padding: 16px 32px;
+        display: flex;
+        flex-direction: column;
+        box-shadow: 0px 3px 6px rgba(0,0,0,.16);
+        border-top-width: 4px;
+        border-top-style: solid;
+        border-radius: 1px;
+        @media (max-width:$breakpointTwo) {
+             width: calc(50% - 8px);
+             margin-bottom: 32px;
+             padding: 8px 16px 24px 16px;
+        }
+        @media (max-width:$breakpointOne) {
+            width: 100%;
+            margin-bottom: 0;
+            & + & {
+                margin-top: 24px;
+                
+            }
+        }
+    }
+    &-cart-image {
+        display: flex;
+        justify-content: center;
+        > img {
+            @media (max-width:$breakpointTwo) {
+              
+                max-height: 100px;
+                 
+            }
+            @media (max-width:$breakpointOne) {
+              
+                max-height: 200px;
+                 
+            }
+
+        }
+    }
+    &-cart-name {
+        font-size: 20px;
+        margin-top: 13px;
+        color: $colorBlack;
+        font-family: "ProximaNovaMedium";
+        @media (max-width:360px) {
+            margin-top: 24px;
+             
+        }
+    }
+    &-cart-description-small {
+        font-size: 10px;
+        margin-top: 4px;
+        color: $colorBlack;
+        @media (max-width:$breakpointOne) {
+            margin-top: 8px;
+            font-size: 11px;    
+        }
+    }
+    &-cart-price {
+        font-size: 14px;
+        margin-top: 14px;
+        color: $colorGray__1;
+        @media (max-width:$breakpointOne) {
+            margin-top: 16px;
+            font-size: 15px;    
+        }
+    }
+    &-cart-delivered {
+        color: $colorBlue__1;
+        font-size: 10px;
+        margin-top: 8px;
+        max-width: 90%;
+        font-family: "ProximaNovaSemiBold"; 
+        > span {
+            font-size: 10px;
+            color: $colorBlack;
+            font-family: "ProximaNovaMedium"; 
+        }
+    }
+    &-cart-add-item {
+        width: 30px;
+        height: 30px;
+        position: absolute;
+        right: -5px;
+        bottom: -5px;
+        box-shadow: 0px 3px 6px rgba(0,0,0,.1);
+        border-radius: 1px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        > svg {
+            width: 16px;
+            height: 14px;
+        }
+
+    }
+}

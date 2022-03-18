@@ -1,0 +1,36 @@
+.#{$prefix} {
+
+    &-sub-section {
+        &-container {
+            display: flex;
+            padding: 8px 8px 8px 8px;
+            justify-content: space-between;
+            
+            font-size: 14px;
+        }
+        &-left {
+            font-family: "ProximaNovaSemiBold";
+            color: $colorBlack;
+        }
+        &-rigth {
+            font-family: "ProximaNovaSemiBold";
+            color: $colorBlack;
+        }
+        &-button-sort {
+            font-family: "ProximaNovaSemiBold";
+            color: $colorBlack;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            > img {
+                width: 10px;
+                margin-left: 4px;
+            }
+        }
+        &-length {
+            font-family: "ProximaNovaSemiBold";
+            color: $colorBlack; 
+        }
+    }
+ 
+}

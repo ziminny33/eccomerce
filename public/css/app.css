@@ -1,0 +1,343 @@
+@font-face {
+  font-family: "ProximaNovaBold";
+  src: url(/fonts/ProximaNovaBold.otf?be6c88e07a79b457e070a8c094b2e798) format("opentype");
+}
+@font-face {
+  font-family: "ProximaNovaSemiBold";
+  src: url(/fonts/ProximaNovaSemibold.otf?3a2e303446fad19697b00dc0f0c6399f) format("opentype");
+}
+@font-face {
+  font-family: "ProximaNovaMedium";
+  src: url(/fonts/ProximaNovaMedium.otf?df0e1fba8a4394b7b16139ac48345ac3) format("opentype");
+}
+@font-face {
+  font-family: "ProximaNovaRegular";
+  src: url(/fonts/ProximaNovaRegular.otf?7bc9ce404c297c24f2104c18ec4a8526) format("opentype");
+}
+/***
+    The new CSS reset - version 1.5.1 (last updated 1.3.2022)
+    GitHub page: https://github.com/elad2412/the-new-css-reset
+***/
+/*
+    Remove all the styles of the "User-Agent-Stylesheet", except for the 'display' property
+    - The "symbol *" part is to solve Firefox SVG sprite bug
+ */
+*:where(:not(iframe, canvas, img, svg, video):not(svg *, symbol *)) {
+  all: unset;
+  display: revert;
+}
+
+/* Preferred box-sizing value */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  font-family: "ProximaNovaRegular";
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Reapply the pointer cursor for anchor tags */
+a, button {
+  cursor: pointer;
+}
+
+/* Remove list styles (bullets/numbers) */
+ol, ul, menu {
+  list-style: none;
+}
+
+/* For images to not be able to exceed their container */
+img {
+  max-width: 100%;
+}
+
+/* removes spacing between cells in tables */
+table {
+  border-collapse: collapse;
+}
+
+/* revert the 'white-space' property for textarea elements on Safari */
+textarea {
+  white-space: revert;
+}
+
+/* minimum style to allow to style meter element */
+meter {
+  -webkit-appearance: revert;
+  -moz-appearance: revert;
+       appearance: revert;
+}
+
+/* reset default text opacity of input placeholder */
+::-moz-placeholder {
+  color: unset;
+}
+:-ms-input-placeholder {
+  color: unset;
+}
+::placeholder {
+  color: unset;
+}
+
+/* fix the feature of 'hidden' attribute.
+   display:revert; revert to element instead of attribute */
+:where([hidden]) {
+  display: none;
+}
+
+/* revert for bug in Chromium browsers
+   - fix for the content editable attribute will work properly. */
+:where([contenteditable]) {
+  -moz-user-modify: read-write;
+  -webkit-user-modify: read-write;
+  overflow-wrap: break-word;
+  -webkit-line-break: after-white-space;
+}
+
+/* apply back the draggable feature - exist only in Chromium and Safari */
+:where([draggable="true"]) {
+  -webkit-user-drag: element;
+}
+
+header {
+  display: flex;
+  padding: 8px;
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 0.3px solid #DDDDDD;
+  align-items: center;
+  width: 100%;
+  z-index: 99999;
+  position: fixed;
+  background-color: #fff;
+  height: 40px;
+  box-shadow: 1px 2px 3px rgba(161, 161, 161, 0.1);
+}
+header .global-hamburger {
+  width: 100%;
+  height: 100%;
+}
+header .global-hamburger__1, header .global-hamburger__2, header .global-hamburger__3 {
+  height: 3px;
+  width: 100%;
+  border-radius: 2px;
+}
+header .global-hamburger__1:nth-child(2), header .global-hamburger__2:nth-child(2), header .global-hamburger__3:nth-child(2) {
+  margin: 3px 0 3px 0;
+}
+header .global-center-text {
+  font-family: "ProximaNovaMedium";
+  font-weight: bold;
+}
+header .global-button-hamburger {
+  width: 20px;
+  height: 15px;
+}
+main {
+  width: 100%;
+  padding-top: 55px;
+}
+
+.product-breadcrumb-container {
+  margin-bottom: 16px;
+  margin-left: 8px;
+}
+.product-breadcrumb-button {
+  font-family: "ProximaNovaMedium";
+  font-size: 14px;
+  color: #5A5A5A;
+}
+.product-breadcrumb-button:last-child {
+  color: #3498DB;
+  font-family: "ProximaNovaSemiBold";
+}
+
+.product-item {
+  font-family: "ProximaNovaMedium" !important;
+}
+
+.glider-track {
+  margin-left: 8px !important;
+  font-size: 18px;
+  color: #C6C6C6;
+}
+
+.glider-track .active {
+  color: #171617 !important;
+}
+
+.glider-wrapper {
+  margin-bottom: 16px !important;
+}
+
+.product-subcategories-container {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 16px 0 3px 8px;
+  gap: 5px;
+}
+.product-subcategories-item {
+  margin-right: 8px;
+  font-size: 13px;
+  font-family: "ProximaNovaMedium";
+  color: #fff;
+  margin-bottom: 3px;
+  border-width: 0.1px;
+  border-radius: 6px;
+  border-style: solid;
+  border-color: #FFAA00;
+  padding: 3px 6px;
+  background-color: #FFAA00;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.2);
+}
+.product-subcategories-hide-show-all {
+  font-size: 10px;
+  margin-left: 8px;
+  font-family: "ProximaNovaSemiBold";
+}
+
+.product-sub-section-container {
+  display: flex;
+  padding: 8px 8px 8px 8px;
+  justify-content: space-between;
+  font-size: 14px;
+}
+.product-sub-section-left {
+  font-family: "ProximaNovaSemiBold";
+  color: #171617;
+}
+.product-sub-section-rigth {
+  font-family: "ProximaNovaSemiBold";
+  color: #171617;
+}
+.product-sub-section-button-sort {
+  font-family: "ProximaNovaSemiBold";
+  color: #171617;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.product-sub-section-button-sort > img {
+  width: 10px;
+  margin-left: 4px;
+}
+.product-sub-section-length {
+  font-family: "ProximaNovaSemiBold";
+  color: #171617;
+}
+
+.product-container {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 8px;
+}
+@media (max-width: 470px) and (min-width: 360px) {
+  .product-container {
+    justify-content: space-between;
+  }
+}
+.product-cart-item {
+  position: relative;
+  width: 200px;
+  padding: 16px 32px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.16);
+  border-top-width: 4px;
+  border-top-style: solid;
+  border-radius: 1px;
+}
+@media (max-width: 470px) {
+  .product-cart-item {
+    width: calc(50% - 8px);
+    margin-bottom: 32px;
+    padding: 8px 16px 24px 16px;
+  }
+}
+@media (max-width: 360px) {
+  .product-cart-item {
+    width: 100%;
+    margin-bottom: 0;
+  }
+  .product-cart-item + .product-cart-item {
+    margin-top: 24px;
+  }
+}
+.product-cart-image {
+  display: flex;
+  justify-content: center;
+}
+@media (max-width: 470px) {
+  .product-cart-image > img {
+    max-height: 100px;
+  }
+}
+@media (max-width: 360px) {
+  .product-cart-image > img {
+    max-height: 200px;
+  }
+}
+.product-cart-name {
+  font-size: 20px;
+  margin-top: 13px;
+  color: #171617;
+  font-family: "ProximaNovaMedium";
+}
+@media (max-width: 360px) {
+  .product-cart-name {
+    margin-top: 24px;
+  }
+}
+.product-cart-description-small {
+  font-size: 10px;
+  margin-top: 4px;
+  color: #171617;
+}
+@media (max-width: 360px) {
+  .product-cart-description-small {
+    margin-top: 8px;
+    font-size: 11px;
+  }
+}
+.product-cart-price {
+  font-size: 14px;
+  margin-top: 14px;
+  color: #5A5A5A;
+}
+@media (max-width: 360px) {
+  .product-cart-price {
+    margin-top: 16px;
+    font-size: 15px;
+  }
+}
+.product-cart-delivered {
+  color: #3498DB;
+  font-size: 10px;
+  margin-top: 8px;
+  max-width: 90%;
+  font-family: "ProximaNovaSemiBold";
+}
+.product-cart-delivered > span {
+  font-size: 10px;
+  color: #171617;
+  font-family: "ProximaNovaMedium";
+}
+.product-cart-add-item {
+  width: 30px;
+  height: 30px;
+  position: absolute;
+  right: -5px;
+  bottom: -5px;
+  box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 1px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.product-cart-add-item > svg {
+  width: 16px;
+  height: 14px;
+}

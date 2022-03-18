@@ -1,0 +1,53 @@
+
+
+header {
+     display: flex;
+     padding: 8px; 
+     display: flex;
+     justify-content: space-between;
+     border-bottom: .3px solid #DDDDDD;
+     align-items: center;
+     width: 100%;
+     z-index: 99999;
+     position: fixed;
+     background-color: #fff;
+     height: 40px;
+     box-shadow: 1px 2px 3px rgba($color: #a1a1a1, $alpha: .1);
+    .#{$prefix} {
+
+        &-hamburger {
+
+            width: 100%;
+            height: 100%;
+
+            &__1 , &__2 , &__3 {
+                height: 3px;
+                width: 100%;
+                border-radius: 2px;
+                &:nth-child(2) {
+                   margin: 3px 0 3px 0;   
+                }
+            }
+
+        }
+        &-center-text {
+            font-family: "ProximaNovaMedium";  
+            font-weight: bold;
+      }
+      &-right-icon  {
+      
+      }
+      &-button-hamburger {
+          
+          width: 20px;
+          height: 15px;
+      }
+      &-button-right {
+       
+      }
+     
+    }
+
+
+
+}
