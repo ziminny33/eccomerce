@@ -1,5 +1,4 @@
-<script src="/js/glider/glider.min.js">
-</script>
+ 
 
 <div class="glider-wrapper">
     <div class="glider-contain product-glider-container" id="product-glider-container">
@@ -17,6 +16,3 @@
 </div>
 
  
-
-  <script src="/js/products/card.js">
-  </script>

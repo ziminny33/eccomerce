@@ -5,49 +5,49 @@ header {
      padding: 8px; 
      display: flex;
      justify-content: space-between;
-     border-bottom: .3px solid #DDDDDD;
      align-items: center;
      width: 100%;
+     background-color: $colorBlack;
      z-index: 99999;
      position: fixed;
-     background-color: #fff;
-     height: 40px;
-     box-shadow: 1px 2px 3px rgba($color: #a1a1a1, $alpha: .1);
+    //  box-shadow: 1px 2px 3px rgba($color: #a1a1a1, $alpha: .1);
+    //  border-bottom: .3px solid #DDDDDD;
     .#{$prefix} {
+        // HEADER FOR MOBILE
 
-        &-hamburger {
-
-            width: 100%;
-            height: 100%;
-
-            &__1 , &__2 , &__3 {
-                height: 3px;
-                width: 100%;
-                border-radius: 2px;
-                &:nth-child(2) {
-                   margin: 3px 0 3px 0;   
-                }
-            }
-
+        &-header-left {
+            margin-left: 4px;
         }
-        &-center-text {
-            font-family: "ProximaNovaMedium";  
-            font-weight: bold;
-      }
-      &-right-icon  {
-      
-      }
-      &-button-hamburger {
-          
-          width: 20px;
-          height: 15px;
-      }
-      &-button-right {
+        &-header-center-text {
+            font-family: "ProximaNovaSemiBold";
+            color: $colorPrimary;
+            font-size: 16px;
+        } 
+        &-header-button-right {
+            margin-right: 4px;
+        }
+        // HEADER FOR WEB
+        &-header-logo {
+            margin: 0 20px 0 8px;
+            > img {
+                height: 36px;
+            }
+        }
+        &-header-company-name {
+            font-size: 18px;
+            font-family: "ProximaNovaMedium";
+        }
+
        
-      }
-     
     }
 
+}
 
-
+@keyframes changeScrollHeightHeader {
+    0% {
+        height: 80px;
+    }
+    100% {
+        height: 40px;
+    }
 }

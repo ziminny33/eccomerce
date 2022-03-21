@@ -1,3 +1,4 @@
+ 
 const mix = require('laravel-mix');
 
 /*
@@ -11,7 +12,23 @@ const mix = require('laravel-mix');
  |
  */
 
-mix.js('resources/js/app.js', 'public/js')
-    .sass('resources/sass/app.scss', 'public/css', [
-        //
-    ]);
+mix
+.ts('resources/ts/product/app.ts', 'public/ts/product')
+.ts('resources/ts/header/app.ts', 'public/ts/header')
+.js('resources/js/app.js', 'public/js')
+    
+    .dumpWebpackConfig({
+        module: {
+            rules:[
+                {
+                    test: /\.ts?$/,
+                    loader: "ts-loader",
+                    exclude: /node_modules/
+                }
+            ]
+        },
+        resolve: {
+            extensions: ['*', '.js','.ts', '.json'],
+      
+        }
+    }).sass('resources/sass/app.scss', 'public/css')

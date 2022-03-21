@@ -1,6 +1,6 @@
 
 <div class="product-container">
-    @foreach ($items as $item)
+    {{-- @foreach ($items as $item)
         <x-product.card-item 
         :name="$item['Name']"
         :image="$item['Image']"
@@ -10,7 +10,11 @@
         :descriptionFull="$item['Description']"
         :delivered="$item['Delivered']"
         />
-    @endforeach
+    @endforeach --}}
+
+    {{-- 
+        Javascipt fill
+        --}}
 </div>
     
  

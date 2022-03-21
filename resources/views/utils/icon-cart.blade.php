@@ -1,9 +1,9 @@
 <?xml version="1.0" ?>
     <svg 
-      height="20px" 
+      height="{{ $sizeSvg ?? '18px'}}" 
       version="1.1" 
       viewBox="0 0 20 20" 
-      width="20px" 
+      width="{{ $sizeSvg ?? '18px'}}" 
       xmlns="http://www.w3.org/2000/svg" 
       xmlns:sketch="http://www.bohemiancoding.com/sketch/ns" 
       xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -15,7 +15,7 @@
             stroke="none" 
             stroke-width="1">
                 <g 
-                    fill="{{ $themeColor }}" 
+                    fill="{{ $fillSvg ?? $themeColor }}" 
                     id="Core" 
                     transform="translate(-212.000000, -422.000000)"
                 >

@@ -5,27 +5,34 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="/css/app.css">
-    @section('css')
-        
-    @show
-    <script src="/js/app.js"></script>
+    <script  src="{{ mix('js/app.js') }}"></script>
+    <script  src="{{mix('ts/product/app.js')}}" ></script>
+    <script  src="{{mix('ts/header/app.js')}}" ></script>
+    @stack('css')
+ 
+    
+   
     <title>@yield('title','Trem Digital')</title>
  
 </head>
 <body>
+
     <header>
-        @include('layouts.header',[ 'themeColor' =>'#FFAA00'])
+        @yield('header')
     </header>
-    <main>
-        @section('body')
-        @show
+
+    <main id="main">
+        @yield('body')  
     </main>
+
     <footer>
-        @include('layouts.footer')
+        @yield('footer') 
     </footer>
+
 </body>
 
-@section('script')
+@stack('script')
     
-@show
+ 
+
 </html>

@@ -3,22 +3,34 @@
  
     &-item {
         font-family: "ProximaNovaMedium" !important;
+        border: .5px solid rgba($color: #bdbdbd, $alpha: .7);
+        padding: 8px 4px;
+        border-radius: 16px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-right: 8px;
+        margin-bottom: 8px;
     }
 }
 
 .glider-track {
     margin-left: 8px !important;
-    font-size: 18px;
-    color: $colorGray__2;
+    font-size: 14px;
+    color: $colorGray__1;
  
 }
 
  
-
-.glider-track .active {
-    color: $colorBlack !important;
+.glider-track .selected {
+    color: #fff !important;
+    background-color: $colorBlack;
+    transition: all 0.3s;
 }
+ 
 
 .glider-wrapper {
     margin-bottom: 16px !important;
+  
+    
 }

@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Product;
 use App\Http\Controllers\Controller;
  
-class ListProducts extends Controller
+class ListProductController extends Controller
 {
   
     /**
@@ -19,11 +19,13 @@ class ListProducts extends Controller
       $strJsonFileShowTree = file_get_contents(__DIR__."/json/ShowTree.json");
       $categories = json_decode($strJsonFileShowTree,true); 
  
+        
         return View('product.list',
           [
             'items' => $items["Data"]["Data"] , 
             'categories' => $categories,
-            'themeColor' => '#FFAA00'
+            'themeColor' => '#FFAA00',
+            'isMobile' => false
          ]);
     }
 }
