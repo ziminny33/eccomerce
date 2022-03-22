@@ -1,24 +1,27 @@
-import { ItemCategories } from "../interfaces/ItemCategories"
-import { ItemShow } from "../interfaces/ItemShow"
-import { limitLetters } from "../utils/limitLetters"
-import { loadGrider } from "../utils/loadGrider"
-import { recursiveCategory } from "../utils/recursiveCategory"
-import { totalCategoriesLength } from "../utils/totalCategoriesLength"
-import { ChangeOrder, SortByInterface } from "./changeOrder"
+import { ItemCategories } from "../../interfaces/ItemCategories"
+import { ItemShow } from "../../interfaces/ItemShow"
+import { loadGrider } from "../../utils/loadGrider"
+import { recursiveCategory } from "../../utils/recursiveCategory"
+import { totalCategoriesLength } from "../../utils/totalCategoriesLength"
+import ChangeOrder, {  SortByInterface } from "./ChangeOrder"
+import FillItems from "./FillItems"
+
 
     window.loadGlider = loadGrider
  
-    window.products = () => {
+    export const products = () => {
                 const { categories, items, themeColor ,isMobile } = window.fillVariables
                 const changeOrder = new ChangeOrder()
+                const fillItems = new FillItems()
              
 
+               
                 let allIdsForShowItems:number[] = []
                 let container = document.querySelector(".product-container")
        
                 // Remove all items 
                    const removeAllItems = () => {
-                       document.querySelectorAll(".product-cart-item").forEach(element => {
+                       document.querySelectorAll(".product-cart-item-wrapper").forEach(element => {
                            element.remove()
                        });
                    }
@@ -65,61 +68,17 @@ import { ChangeOrder, SortByInterface } from "./changeOrder"
                   const fill = (filter:ItemShow[]) => {
                         
                        console.log("DENTRO FILL");
-                       
-
+                
                         filter.forEach( item => {
-       
-                                let content = document.createElement("div")
-                                content.classList.add('product-cart-item')
-                                content.style.borderTopColor = themeColor
-                       
-                       
-                                let image = document.createElement("div")
-                                image.classList.add('product-cart-image')
-                                let innerImage = document.createElement("img")
-                                innerImage.setAttribute("src",item.Image)
-                                image.appendChild(innerImage)
-                                content.appendChild(image)
-                       
-                                let name = document.createElement("div")
-                                name.classList.add('product-cart-name')
-                                name.textContent = item.Name
-                                content.appendChild(name)
-                       
-                                let description = document.createElement("div")
-                                description.classList.add('product-cart-description-small')
-                                description.innerHTML = limitLetters(item.Description,100)
-                                content.appendChild(description)
-                       
-                                let price = document.createElement("div")
-                               
-                                price.classList.add('product-cart-price')
-                                price.innerHTML = item.Amount
-                                content.appendChild(price)
-                       
-                                let delivered = document.createElement("div")
-                                delivered.classList.add('product-cart-delivered')
-                                delivered.innerHTML = "<span>Entregue por:</span> Alguma empresa"
-                                content.appendChild(delivered)
-                       
-                                let cartAbsoluteRight = document.createElement("div")
-                                cartAbsoluteRight.classList.add('product-cart-add-item')
-                                cartAbsoluteRight.style.backgroundColor = themeColor 
-                                let innerImageCart = document.createElement("img")
-                                innerImageCart.setAttribute("src",'/images/cart.svg')
-                                cartAbsoluteRight.appendChild(innerImageCart)
-                                content.appendChild(cartAbsoluteRight)
-                   
-                                container?.appendChild(content)
-                                })
+                            fillItems.execute(item)
+                        })
 
                   }
                   if(!rerenderClickBreak) {
                   changeOrder.sortBy( (sort:SortByInterface) => {
                         removeAllItems()
                         console.log("Dentro sortby");
-                           
-                        
+
                           switch (sort) {
                                 case "asc":
                                         
@@ -230,6 +189,7 @@ import { ChangeOrder, SortByInterface } from "./changeOrder"
                        }
                         allIdsForShowItems = []
                        const buttons = document.querySelectorAll(".product-breadcrumb-button")
+                       
                         
                        const [_,...buttonArray] = [...buttons]
                        buttonArray.forEach((item,index) => {
@@ -276,7 +236,8 @@ import { ChangeOrder, SortByInterface } from "./changeOrder"
                     });
                 }
                 breadCrumbsEvent()
-                 searchPerCategory(0,true)
+                categoriesChange(0,true)
+                searchPerCategory(0,true)
 }
 
  

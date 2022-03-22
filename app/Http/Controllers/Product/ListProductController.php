@@ -20,12 +20,6 @@ class ListProductController extends Controller
       $categories = json_decode($strJsonFileShowTree,true); 
  
         
-        return View('product.list',
-          [
-            'items' => $items["Data"]["Data"] , 
-            'categories' => $categories,
-            'themeColor' => '#FFAA00',
-            'isMobile' => false
-         ]);
+        return View('product.list');
     }
 }

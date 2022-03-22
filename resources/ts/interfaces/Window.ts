@@ -8,13 +8,17 @@ export {};
     items:ItemShow[],
     themeColor:string
     isMobile:boolean
+    isDefaultNavigation:boolean
  }
 
 declare global {
     interface Window {
         header: () => void
+        body: () => void
+        footer: () => void
         loadGlider: () => void
         products:() => void
+        productDetails:() => void
         fillVariables:Params
     }
 }

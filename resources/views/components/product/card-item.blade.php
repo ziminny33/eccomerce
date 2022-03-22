@@ -1,4 +1,4 @@
-<div class="product-cart-item" style='border-top-color:{{ $themeColor }}'>
+{{-- <div class="product-cart-item" style='border-top-color:{{ $themeColor }}'>
      
     <div class="product-cart-image">
         <img src="{{ $image }}" alt="" srcset="">
@@ -15,8 +15,8 @@
     <p class="product-cart-delivered">
         <span>Entregue por:</span> {{ $delivered }}
     </p>
-    <div class="product-cart-add-item" style="background-color: {{ $themeColor }}">
+    <button class="product-cart-add-item" style="background-color: {{ $themeColor }}">
         @include('utils.icon-cart',[ 'themeColor' => '#fff'])
-    </div>
-</div>
+    </button>
+</div> --}}
 

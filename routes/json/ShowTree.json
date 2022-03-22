@@ -1,0 +1,142 @@
+{
+    "Name": "Brunks Lanchonete LTDA",
+    "Id": 387,
+    "Document": "31362857000185",
+    "ItemCategories": [
+        {
+            "Id": 88,
+            "Name": "Lanches",
+            "children": []
+        },
+        {
+            "Id": 110,
+            "Name": "Cosméticos",
+            "children": []
+        },
+        {
+            "Id": 111,
+            "Name": "Perfumaria",
+            "children": []
+        },
+        {
+            "Id": 114,
+            "Name": "Medicamentos",
+            "children": [
+                {
+                    "Id": 113,
+                    "ParentId": 114,
+                    "Name": "Éticos",
+                    "CreatedDate": "2021-12-18 14:01:35",
+                    "LastModifyDate": "2021-12-20 16:30:30",
+                    "CompanyId": 387,
+                    "CreatedBy": 4613,
+                    "LastModifyBy": 4613,
+                    "children": []
+                },
+                {
+                    "Id": 117,
+                    "ParentId": 114,
+                    "Name": "Similar",
+                    "CreatedDate": "2021-12-20 16:31:54",
+                    "LastModifyDate": "2021-12-20 16:31:54",
+                    "CompanyId": 387,
+                    "CreatedBy": 4613,
+                    "LastModifyBy": 4613,
+                    "children": [
+                        {
+                            "Id": 400,
+                            "ParentId": 117,
+                            "Name": "Outros",
+                            "CreatedDate": "2021-12-18 14:01:35",
+                            "LastModifyDate": "2021-12-20 16:30:30",
+                            "CompanyId": 387,
+                            "CreatedBy": 4613,
+                            "LastModifyBy": 4613,
+                            "children": [
+                                {
+                                    "Id": 900,
+                                    "ParentId": 117,
+                                    "Name": "Outros 6",
+                                    "CreatedDate": "2021-12-18 14:01:35",
+                                    "LastModifyDate": "2021-12-20 16:30:30",
+                                    "CompanyId": 387,
+                                    "CreatedBy": 4613,
+                                    "LastModifyBy": 4613,
+                                    "children": []
+                                },
+                                {
+                                    "Id": 901,
+                                    "ParentId": 117,
+                                    "Name": "Outros 7",
+                                    "CreatedDate": "2021-12-18 14:01:35",
+                                    "LastModifyDate": "2021-12-20 16:30:30",
+                                    "CompanyId": 387,
+                                    "CreatedBy": 4613,
+                                    "LastModifyBy": 4613,
+                                    "children": []
+                                }
+                            ]
+                        },
+                        {
+                            "Id": 420,
+                            "ParentId": 117,
+                            "Name": "Outros 3",
+                            "CreatedDate": "2021-12-18 14:01:35",
+                            "LastModifyDate": "2021-12-20 16:30:30",
+                            "CompanyId": 387,
+                            "CreatedBy": 4613,
+                            "LastModifyBy": 4613,
+                            "children": [
+                                {
+                                    "Id": 9636,
+                                    "ParentId": 420,
+                                    "Name": "Variedades",
+                                    "CreatedDate": "2021-12-18 14:01:35",
+                                    "LastModifyDate": "2021-12-20 16:30:30",
+                                    "CompanyId": 387,
+                                    "CreatedBy": 4613,
+                                    "LastModifyBy": 4613,
+                                    "children": [
+                                        {
+                                            "Id": 9637,
+                                            "ParentId": 420,
+                                            "Name": "Dentro Variedades",
+                                            "CreatedDate": "2021-12-18 14:01:35",
+                                            "LastModifyDate": "2021-12-20 16:30:30",
+                                            "CompanyId": 387,
+                                            "CreatedBy": 4613,
+                                            "LastModifyBy": 4613,
+                                            "children": []
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "Id": 430,
+                            "ParentId": 117,
+                            "Name": "Outros 2",
+                            "CreatedDate": "2021-12-18 14:01:35",
+                            "LastModifyDate": "2021-12-20 16:30:30",
+                            "CompanyId": 387,
+                            "CreatedBy": 4613,
+                            "LastModifyBy": 4613,
+                            "children": []
+                        }
+                    ]
+                },
+                {
+                    "Id": 118,
+                    "ParentId": 114,
+                    "Name": "Genéricos",
+                    "CreatedDate": "2021-12-20 16:32:03",
+                    "LastModifyDate": "2021-12-20 16:32:03",
+                    "CompanyId": 387,
+                    "CreatedBy": 4613,
+                    "LastModifyBy": 4613,
+                    "children": []
+                }
+            ]
+        }
+    ]
+}

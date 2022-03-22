@@ -1,0 +1,105 @@
+$prefix:'details';
+
+.#{$prefix} {
+
+    &-image-container {
+        
+        height: 321px;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        position: relative;
+         
+      
+    }
+
+    &-button-back {
+        position: absolute;
+        top: 20px;
+        left: -5px;
+        width: 60px;
+        height: 40px;
+        background-color: rgba($color: $colorWhite, $alpha: .6);
+        border-radius: 4px;
+        display: flex;
+        align-items: center;
+        padding-left: 21px;
+    }
+
+    &-icon-back {
+
+    }
+
+    &-product-name {
+        font-size: 28px;
+        font-family: "ProximaNovaSemiBold";
+        margin: 16px 0 8px 16px;  
+    }
+    
+    &-product-amount {
+        font-size: 20px;
+        margin-left: 16px;
+    }
+
+    &-product-description {
+        color: $colorGray__3;
+        margin: 16px;
+        line-height: 21px;
+ 
+    }
+    &-footer-bottoms {
+       
+        width: 100%;
+        position: fixed;
+        bottom: 0px;
+        left: 0;
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        background-color: $colorWhite;
+        padding-bottom: 32px;
+        
+         
+    }
+    &-button-rounded-action {
+        border-radius: 100px;
+        border: 1px solid $colorGray__2;
+        width: 34px;
+        height: 34px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family: "ProximaNovaMedium";
+        font-size: 30px;
+        color: $colorGray__1;
+        box-shadow: 1px 3px 8px rgba($color: $colorBlack, $alpha: .2);
+   
+    }
+    &-qtd {
+        margin: 0 16px;
+        font-family: "ProximaNovaMedium";
+        font-size: 24px;
+        color: $colorGray__1;
+    }
+
+    &-button-confirm {
+        background-color: $colorPrimary;
+        color: $colorWhite;
+        font-size: 20px;
+        padding: 8px 40px;
+        border-radius: 8px;
+        margin-right: -8px;
+        margin-left: 32px;
+        font-family: "ProximaNovaMedium";
+        box-shadow: 1px 3px 8px rgba($color: $colorBlack, $alpha: .2);
+    }
+
+}
+
+ 
+
+
+ 
+ 
+
+ 

@@ -20,7 +20,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::prefix('CategoryItem')->group(function () {
-
+    
     Route::get('ShowTree', function () {
         $strJsonFile = file_get_contents(__DIR__."/json/ShowTree.json");
         $array = json_decode($strJsonFile,true); 
@@ -38,6 +38,22 @@ Route::prefix('Item')->group(function () {
      Route::get('Show', function () {
          $strJsonFile = file_get_contents(__DIR__."/json/ItemShow.json");
          $array = json_decode($strJsonFile,true); 
-         return response()->json($array);
+         return response()->json($array['Data']['Data']);
+   });
+
+   Route::get('Show/{id}', function ($id) {
+     function searchItem($id) {
+        $strJsonFileItemShow = file_get_contents(__DIR__."/json/ItemShow.json");
+        $items = json_decode($strJsonFileItemShow,true); 
+
+        foreach ($items["Data"]["Data"] as $item) {
+           
+            if($id == $item['Id'] ) return $item;
+        } 
+        return null;
+    }
+
+    return response()->json(searchItem($id));
+
    });
 });

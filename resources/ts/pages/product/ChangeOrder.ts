@@ -1,16 +1,38 @@
-import { BaseClass } from "./BaseClass";
+import { BaseClass } from "../BaseClass";
 
-  
+/**
+ *  @interface SortByInterface
+ *  @types asc | name | desc
+ *  Types sorted
+ */
 export type SortByInterface = 'asc' | 
                               'name' |
                               'desc'
 
-export class ChangeOrder extends BaseClass {
+export default class ChangeOrder extends BaseClass {
 
-   
+    /**
+     *  @var productSubSectionButtonSort
+     *  Button sorted
+     */
     private productSubSectionButtonSort:HTMLButtonElement;
+
+    /**
+     *  @var productSubSectionButtonContent
+     *  Text button sorted
+     */
     private productSubSectionButtonText:HTMLSpanElement;
+
+    /**
+     *  @var productSubSectionButtonContent
+     *  Content wrapper options
+     */
     private productSubSectionButtonContent:HTMLDivElement;
+
+    /**
+     *  @var productSubSectionRigth
+     *  Container wrapper all selections and options
+     */
     private productSubSectionRigth:HTMLDivElement;
 
     constructor() {

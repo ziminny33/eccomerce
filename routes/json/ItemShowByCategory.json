@@ -1,0 +1,45 @@
+{
+	"Data": {
+		"Data": [
+			{
+				"Id": 497,
+				"Name": "Aspirina",
+				"NCMId": null,
+				"CategoryId": 113,
+				"CreatedDate": "2021-12-20 16:41:08",
+				"LastModifyDate": "2022-01-27 13:00:36",
+				"CreatedBy": 4613,
+				"LastModifyBy": 4613,
+				"CompanyId": 387,
+				"ItemExternalId": null,
+				"Amount": "4.25",
+				"EANId": null,
+				"MakeServicesTax": true,
+				"QueueId": 8,
+				"Queue": "Remédios"
+			},
+			{
+				"Id": 454,
+				"Name": "Anador",
+				"NCMId": null,
+				"CategoryId": 113,
+				"CreatedDate": "2021-10-04 22:22:48",
+				"LastModifyDate": "2022-01-27 13:00:23",
+				"CreatedBy": 4,
+				"LastModifyBy": 4,
+				"CompanyId": 387,
+				"ItemExternalId": null,
+				"Amount": "3.25",
+				"EANId": null,
+				"MakeServicesTax": true,
+				"QueueId": 8,
+				"Queue": "Remédios"
+			}
+		],
+		"Count": 2
+	},
+	"Error": "",
+	"Success": true,
+	"ReturnCode": 1,
+	"NSUContains": false
+}

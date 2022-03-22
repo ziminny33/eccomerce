@@ -10,7 +10,8 @@
   
        }
     }
-    &-cart-item {
+
+    &-cart-item-wrapper {
         position: relative; 
         width: 200px;
         padding: 16px 32px;
@@ -32,7 +33,13 @@
                 margin-top: 24px;
                 
             }
-        }
+        }   
+    }
+
+    &-cart-item {
+         
+        
+     
     }
     &-cart-image {
         display: flex;
@@ -91,14 +98,16 @@
             font-family: "ProximaNovaMedium"; 
         }
     }
+
+
     &-cart-add-item {
-        width: 30px;
-        height: 30px;
+        width: 60px;
+        height: 30px; 
         position: absolute;
         right: -5px;
         bottom: -5px;
-        box-shadow: 0px 3px 6px rgba(0,0,0,.1);
-        border-radius: 1px;
+        box-shadow: 0px 3px 6px rgba(0,0,0,.2);
+        border-radius: 4px;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -106,6 +115,7 @@
             width: 16px;
             height: 14px;
         }
+
 
     }
 }

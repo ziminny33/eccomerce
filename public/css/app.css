@@ -149,6 +149,10 @@ header .global-header-company-name {
     height: 40px;
   }
 }
+body {
+  min-height: 100vh;
+}
+
 main {
   width: 100%;
   padding-top: 55px;
@@ -181,6 +185,25 @@ main {
 .global-footer-content > button > span {
   margin-top: 4px;
   font-size: 12px;
+}
+.global-footer-content-cart {
+  position: relative;
+}
+.global-footer-total-items-cart {
+  background-color: #E74C3C;
+  color: #ffffff;
+  width: 16px;
+  height: 16px;
+  border-radius: 8px;
+  position: absolute;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  top: -5px;
+  right: 5px;
+  font-size: 12px;
+  font-family: "ProximaNovaSemiBold";
+  box-shadow: 1px 2px 4px rgba(23, 22, 23, 0.3);
 }
 
 .product-breadcrumb-container {
@@ -328,7 +351,7 @@ main {
     justify-content: space-between;
   }
 }
-.product-cart-item {
+.product-cart-item-wrapper {
   position: relative;
   width: 200px;
   padding: 16px 32px;
@@ -340,18 +363,18 @@ main {
   border-radius: 4px;
 }
 @media (max-width: 470px) {
-  .product-cart-item {
+  .product-cart-item-wrapper {
     width: calc(50% - 8px);
     margin-bottom: 32px;
     padding: 8px 16px 24px 16px;
   }
 }
 @media (max-width: 360px) {
-  .product-cart-item {
+  .product-cart-item-wrapper {
     width: 100%;
     margin-bottom: 0;
   }
-  .product-cart-item + .product-cart-item {
+  .product-cart-item-wrapper + .product-cart-item-wrapper {
     margin-top: 24px;
   }
 }
@@ -415,13 +438,13 @@ main {
   font-family: "ProximaNovaMedium";
 }
 .product-cart-add-item {
-  width: 30px;
+  width: 60px;
   height: 30px;
   position: absolute;
   right: -5px;
   bottom: -5px;
-  box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.1);
-  border-radius: 1px;
+  box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -429,4 +452,79 @@ main {
 .product-cart-add-item > svg {
   width: 16px;
   height: 14px;
+}
+
+.details-image-container {
+  height: 321px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+}
+.details-button-back {
+  position: absolute;
+  top: 20px;
+  left: -5px;
+  width: 60px;
+  height: 40px;
+  background-color: rgba(255, 255, 255, 0.6);
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  padding-left: 21px;
+}
+.details-product-name {
+  font-size: 28px;
+  font-family: "ProximaNovaSemiBold";
+  margin: 16px 0 8px 16px;
+}
+.details-product-amount {
+  font-size: 20px;
+  margin-left: 16px;
+}
+.details-product-description {
+  color: #7C7C7C;
+  margin: 16px;
+  line-height: 21px;
+}
+.details-footer-bottoms {
+  width: 100%;
+  position: fixed;
+  bottom: 0px;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  background-color: #ffffff;
+  padding-bottom: 32px;
+}
+.details-button-rounded-action {
+  border-radius: 100px;
+  border: 1px solid #C6C6C6;
+  width: 34px;
+  height: 34px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "ProximaNovaMedium";
+  font-size: 30px;
+  color: #5A5A5A;
+  box-shadow: 1px 3px 8px rgba(23, 22, 23, 0.2);
+}
+.details-qtd {
+  margin: 0 16px;
+  font-family: "ProximaNovaMedium";
+  font-size: 24px;
+  color: #5A5A5A;
+}
+.details-button-confirm {
+  background-color: #FFAA00;
+  color: #ffffff;
+  font-size: 20px;
+  padding: 8px 40px;
+  border-radius: 8px;
+  margin-right: -8px;
+  margin-left: 32px;
+  font-family: "ProximaNovaMedium";
+  box-shadow: 1px 3px 8px rgba(23, 22, 23, 0.2);
 }

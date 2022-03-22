@@ -13,8 +13,8 @@ const mix = require('laravel-mix');
  */
 
 mix
-.ts('resources/ts/product/app.ts', 'public/ts/product')
-.ts('resources/ts/header/app.ts', 'public/ts/header')
+.sass('resources/sass/app.scss', 'public/css')
+.ts('resources/ts/app.ts', 'public/ts')
 .js('resources/js/app.js', 'public/js')
     
     .dumpWebpackConfig({
@@ -31,4 +31,4 @@ mix
             extensions: ['*', '.js','.ts', '.json'],
       
         }
-    }).sass('resources/sass/app.scss', 'public/css')
+    })

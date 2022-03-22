@@ -163,6 +163,8 @@ return [
         Illuminate\Translation\TranslationServiceProvider::class,
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
+        App\Providers\EnvsProvider::class,
+        App\Providers\CheckIsDefaultNagivationProvider::class,
 
         /*
          * Package Service Providers...

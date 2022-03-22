@@ -11,6 +11,6 @@ class ProductBaseController
     }
 
     function show($id) {
-        return View("product.details");
+        return DetailsProduct::execute($id);
     }
 }
