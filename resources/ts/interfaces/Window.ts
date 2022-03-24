@@ -15,10 +15,13 @@ declare global {
     interface Window {
         header: () => void
         body: () => void
+        cart: () => void
         footer: () => void
         loadGlider: () => void
         products:() => void
         productDetails:() => void
+        loadItems: () => void
+        loadCategories: () => void
         fillVariables:Params
     }
 }

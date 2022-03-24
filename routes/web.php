@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\About\AboutController;
+use App\Http\Controllers\Cart\CartController;
 use App\Http\Controllers\Product\ProductBaseController;
 use Illuminate\Support\Facades\Route;
  
@@ -25,6 +27,16 @@ Route::get('/', function () {
 Route::prefix('product')->group(function () {
     Route::get('/', [ProductBaseController::class,'index'])->name("list-products");
     Route::get('/{id}', [ProductBaseController::class,'show'])->name("details-product");
+});
+
+Route::prefix('cart')->group(function () {
+    Route::get('/', [CartController::class,'index'])->name("cart");
+     
+});
+
+Route::prefix('about')->group(function () {
+    Route::get('/', [AboutController::class,'index'])->name("about");
+     
 });
 
  

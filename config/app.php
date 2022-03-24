@@ -165,6 +165,7 @@ return [
         Illuminate\View\ViewServiceProvider::class,
         App\Providers\EnvsProvider::class,
         App\Providers\CheckIsDefaultNagivationProvider::class,
+        App\Providers\ChangeColorIconFooterCurrentPageProvider::class,
 
         /*
          * Package Service Providers...

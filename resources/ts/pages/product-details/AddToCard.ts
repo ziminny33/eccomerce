@@ -3,6 +3,7 @@ import { ItemShow } from './../../interfaces/ItemShow';
 import { itemLocalstorage } from "../../utils/localstorageVars";
 import { BaseClass } from "../BaseClass";
 import { ControlAmountItem } from "./ControlAmountItem";
+import { getIdUrl } from '../../utils/getIdUrl';
 
 export class AddToCard extends BaseClass {
 
@@ -20,9 +21,7 @@ export class AddToCard extends BaseClass {
     public execute() {
         this.controlAmountItem.execute()
         this.confirm.addEventListener("click", async () => {  
-            const { pathname } = location
-            const id = parseInt(pathname.split("/")[pathname.split("/").length - 1])
-            await this.additem(id)
+            await this.additem(getIdUrl())
             location.href = "/product"
             
         })

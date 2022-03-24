@@ -23,41 +23,19 @@
     <script type="text/javascript" defer>
 
    
-
-    ( async () => {
-        try {
-
-            const loadItems = async () => {
-                const response = await fetch("/api/Item/Show") 
-                return await response.json()
-            } 
-
-            const loadCategories = async () => {
-                const response = await fetch("/api/CategoryItem/ShowTree") 
-                return await response.json()
-            }
-
-            const [ items , categories ] =  await Promise.all([ loadItems(), loadCategories()  ])
+  ( async () => {
+    await window.loadItems() 
+    await window.loadCategories()
  
+       
+    window.header()
 
-            window.fillVariables = {
-             ...window.fillVariables,
-            categories: categories ,
-            items: items ,
-            themeColor: @json($envs->themeColor) ,
-            isMobile: @json($envs->isMobile) 
-         }
-
-         window.header()
-
-        // arquivo ts/product/app.js
-        window.loadGlider()
-        window.products()
-        window.footer()
-        } catch (error) {
-            console.log(error);
-        }
-    })();
+    // arquivo ts/product/app.js
+    window.loadGlider()
+    window.products()
+    window.footer()
+  })();
+ 
 
     </script>
 @endpush

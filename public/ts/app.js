@@ -851,6 +851,229 @@ var body = function body() {
 
 /***/ }),
 
+/***/ "./resources/ts/pages/cart/CartList.ts":
+/*!*********************************************!*\
+  !*** ./resources/ts/pages/cart/CartList.ts ***!
+  \*********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "CartList": () => (/* binding */ CartList)
+/* harmony export */ });
+/* harmony import */ var _BaseClass__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../BaseClass */ "./resources/ts/pages/BaseClass.ts");
+function _typeof(obj) {
+  "@babel/helpers - typeof";
+
+  return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) {
+    return typeof obj;
+  } : function (obj) {
+    return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj;
+  }, _typeof(obj);
+}
+
+function _classCallCheck(instance, Constructor) {
+  if (!(instance instanceof Constructor)) {
+    throw new TypeError("Cannot call a class as a function");
+  }
+}
+
+function _defineProperties(target, props) {
+  for (var i = 0; i < props.length; i++) {
+    var descriptor = props[i];
+    descriptor.enumerable = descriptor.enumerable || false;
+    descriptor.configurable = true;
+    if ("value" in descriptor) descriptor.writable = true;
+    Object.defineProperty(target, descriptor.key, descriptor);
+  }
+}
+
+function _createClass(Constructor, protoProps, staticProps) {
+  if (protoProps) _defineProperties(Constructor.prototype, protoProps);
+  if (staticProps) _defineProperties(Constructor, staticProps);
+  Object.defineProperty(Constructor, "prototype", {
+    writable: false
+  });
+  return Constructor;
+}
+
+function _inherits(subClass, superClass) {
+  if (typeof superClass !== "function" && superClass !== null) {
+    throw new TypeError("Super expression must either be null or a function");
+  }
+
+  subClass.prototype = Object.create(superClass && superClass.prototype, {
+    constructor: {
+      value: subClass,
+      writable: true,
+      configurable: true
+    }
+  });
+  Object.defineProperty(subClass, "prototype", {
+    writable: false
+  });
+  if (superClass) _setPrototypeOf(subClass, superClass);
+}
+
+function _setPrototypeOf(o, p) {
+  _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) {
+    o.__proto__ = p;
+    return o;
+  };
+
+  return _setPrototypeOf(o, p);
+}
+
+function _createSuper(Derived) {
+  var hasNativeReflectConstruct = _isNativeReflectConstruct();
+
+  return function _createSuperInternal() {
+    var Super = _getPrototypeOf(Derived),
+        result;
+
+    if (hasNativeReflectConstruct) {
+      var NewTarget = _getPrototypeOf(this).constructor;
+
+      result = Reflect.construct(Super, arguments, NewTarget);
+    } else {
+      result = Super.apply(this, arguments);
+    }
+
+    return _possibleConstructorReturn(this, result);
+  };
+}
+
+function _possibleConstructorReturn(self, call) {
+  if (call && (_typeof(call) === "object" || typeof call === "function")) {
+    return call;
+  } else if (call !== void 0) {
+    throw new TypeError("Derived constructors may only return object or undefined");
+  }
+
+  return _assertThisInitialized(self);
+}
+
+function _assertThisInitialized(self) {
+  if (self === void 0) {
+    throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
+  }
+
+  return self;
+}
+
+function _isNativeReflectConstruct() {
+  if (typeof Reflect === "undefined" || !Reflect.construct) return false;
+  if (Reflect.construct.sham) return false;
+  if (typeof Proxy === "function") return true;
+
+  try {
+    Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {}));
+    return true;
+  } catch (e) {
+    return false;
+  }
+}
+
+function _getPrototypeOf(o) {
+  _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) {
+    return o.__proto__ || Object.getPrototypeOf(o);
+  };
+  return _getPrototypeOf(o);
+}
+
+
+var CartList = /*#__PURE__*/function (_BaseClass) {
+  _inherits(CartList, _BaseClass);
+
+  var _super = _createSuper(CartList);
+
+  function CartList() {
+    var _this;
+
+    _classCallCheck(this, CartList);
+
+    _this = _super.call(this);
+
+    _this.createElements();
+
+    _this.addClass();
+
+    return _this;
+  }
+
+  _createClass(CartList, [{
+    key: "createElements",
+    value: function createElements() {
+      // header
+      this.cartContainer = this.$(".cart-container");
+      this.cartMarketplaceName = document.createElement("h2");
+      this.cartTremDigital = document.createElement("p"); // cart item
+
+      this.cartItemContainer = document.createElement("div");
+    }
+  }, {
+    key: "addClass",
+    value: function addClass() {
+      //header
+      this.cartMarketplaceName.classList.add("cart-marketplace-name");
+      this.cartTremDigital.classList.add("cart-trem-digital"); //cart
+
+      this.cartItemContainer.classList.add("cart-item-container");
+    }
+  }, {
+    key: "header",
+    value: function header() {
+      this.cartContainer.textContent = window.fillVariables.categories.Name;
+      this.cartTremDigital.textContent = "trem.digital";
+      this.cartContainer.appendChild(this.cartMarketplaceName);
+      this.cartContainer.appendChild(this.cartTremDigital);
+    }
+  }, {
+    key: "item",
+    value: function item() {
+      this.cartContainer.appendChild(this.cartItemContainer);
+    }
+  }, {
+    key: "amountSum",
+    value: function amountSum() {}
+  }, {
+    key: "buttonBottom",
+    value: function buttonBottom() {}
+  }, {
+    key: "execute",
+    value: function execute() {
+      this.header();
+      this.item();
+      this.amountSum();
+      this.buttonBottom();
+    }
+  }]);
+
+  return CartList;
+}(_BaseClass__WEBPACK_IMPORTED_MODULE_0__.BaseClass);
+
+/***/ }),
+
+/***/ "./resources/ts/pages/cart/index.ts":
+/*!******************************************!*\
+  !*** ./resources/ts/pages/cart/index.ts ***!
+  \******************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "cart": () => (/* binding */ cart)
+/* harmony export */ });
+/* harmony import */ var _CartList__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./CartList */ "./resources/ts/pages/cart/CartList.ts");
+
+var cart = function cart() {
+  new _CartList__WEBPACK_IMPORTED_MODULE_0__.CartList().execute();
+};
+
+/***/ }),
+
 /***/ "./resources/ts/pages/footer/AmountItemsCard.ts":
 /*!******************************************************!*\
   !*** ./resources/ts/pages/footer/AmountItemsCard.ts ***!
@@ -1003,7 +1226,7 @@ var AmountItemsCard = /*#__PURE__*/function (_BaseClass) {
   _createClass(AmountItemsCard, [{
     key: "execute",
     value: function execute() {
-      if (this.getitems()) {
+      if (this.getitems() && !window.fillVariables.isMobile) {
         this.badge.style.display = "flex";
         this.badge.textContent = String(this.getitems().length);
       }
@@ -1259,7 +1482,7 @@ __webpack_require__.r(__webpack_exports__);
 var header = function header() {
   var _window$fillVariables = window.fillVariables,
       isMobile = _window$fillVariables.isMobile,
-      isDefaultNavigation = _window$fillVariables.isDefaultNavigation; // If not mobile device. WEB
+      isDefaultNavigation = _window$fillVariables.isDefaultNavigation; // If not mobile device, WEB
 
   if (!isMobile && isDefaultNavigation) new _ScrollChangeSize__WEBPACK_IMPORTED_MODULE_0__.ScrollChangeSize().onScroll();
 };
@@ -1281,6 +1504,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _utils_localstorageVars__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../utils/localstorageVars */ "./resources/ts/utils/localstorageVars.ts");
 /* harmony import */ var _BaseClass__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../BaseClass */ "./resources/ts/pages/BaseClass.ts");
+/* harmony import */ var _utils_getIdUrl__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../utils/getIdUrl */ "./resources/ts/utils/getIdUrl.ts");
 function _typeof(obj) {
   "@babel/helpers - typeof";
 
@@ -1471,6 +1695,7 @@ var __awaiter = undefined && undefined.__awaiter || function (thisArg, _argument
 
 
 
+
 var AddToCard = /*#__PURE__*/function (_BaseClass) {
   _inherits(AddToCard, _BaseClass);
 
@@ -1495,21 +1720,17 @@ var AddToCard = /*#__PURE__*/function (_BaseClass) {
       this.controlAmountItem.execute();
       this.confirm.addEventListener("click", function () {
         return __awaiter(_this2, void 0, void 0, /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee() {
-          var _location, pathname, id;
-
           return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
             while (1) {
               switch (_context.prev = _context.next) {
                 case 0:
-                  _location = location, pathname = _location.pathname;
-                  id = parseInt(pathname.split("/")[pathname.split("/").length - 1]);
-                  _context.next = 4;
-                  return this.additem(id);
+                  _context.next = 2;
+                  return this.additem((0,_utils_getIdUrl__WEBPACK_IMPORTED_MODULE_3__.getIdUrl)());
 
-                case 4:
+                case 2:
                   location.href = "/product";
 
-                case 5:
+                case 3:
                 case "end":
                   return _context.stop();
               }
@@ -1813,6 +2034,303 @@ var ControlAmountItem = /*#__PURE__*/function (_BaseClass) {
 
 /***/ }),
 
+/***/ "./resources/ts/pages/product-details/SelectedItem.ts":
+/*!************************************************************!*\
+  !*** ./resources/ts/pages/product-details/SelectedItem.ts ***!
+  \************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "SelectedItem": () => (/* binding */ SelectedItem)
+/* harmony export */ });
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _BaseClass__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../BaseClass */ "./resources/ts/pages/BaseClass.ts");
+/* harmony import */ var _AddToCard__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./AddToCard */ "./resources/ts/pages/product-details/AddToCard.ts");
+/* harmony import */ var _ControlAmountItem__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./ControlAmountItem */ "./resources/ts/pages/product-details/ControlAmountItem.ts");
+/* harmony import */ var _utils_getIdUrl__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../utils/getIdUrl */ "./resources/ts/utils/getIdUrl.ts");
+function _typeof(obj) {
+  "@babel/helpers - typeof";
+
+  return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) {
+    return typeof obj;
+  } : function (obj) {
+    return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj;
+  }, _typeof(obj);
+}
+
+
+
+function _classCallCheck(instance, Constructor) {
+  if (!(instance instanceof Constructor)) {
+    throw new TypeError("Cannot call a class as a function");
+  }
+}
+
+function _defineProperties(target, props) {
+  for (var i = 0; i < props.length; i++) {
+    var descriptor = props[i];
+    descriptor.enumerable = descriptor.enumerable || false;
+    descriptor.configurable = true;
+    if ("value" in descriptor) descriptor.writable = true;
+    Object.defineProperty(target, descriptor.key, descriptor);
+  }
+}
+
+function _createClass(Constructor, protoProps, staticProps) {
+  if (protoProps) _defineProperties(Constructor.prototype, protoProps);
+  if (staticProps) _defineProperties(Constructor, staticProps);
+  Object.defineProperty(Constructor, "prototype", {
+    writable: false
+  });
+  return Constructor;
+}
+
+function _inherits(subClass, superClass) {
+  if (typeof superClass !== "function" && superClass !== null) {
+    throw new TypeError("Super expression must either be null or a function");
+  }
+
+  subClass.prototype = Object.create(superClass && superClass.prototype, {
+    constructor: {
+      value: subClass,
+      writable: true,
+      configurable: true
+    }
+  });
+  Object.defineProperty(subClass, "prototype", {
+    writable: false
+  });
+  if (superClass) _setPrototypeOf(subClass, superClass);
+}
+
+function _setPrototypeOf(o, p) {
+  _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) {
+    o.__proto__ = p;
+    return o;
+  };
+
+  return _setPrototypeOf(o, p);
+}
+
+function _createSuper(Derived) {
+  var hasNativeReflectConstruct = _isNativeReflectConstruct();
+
+  return function _createSuperInternal() {
+    var Super = _getPrototypeOf(Derived),
+        result;
+
+    if (hasNativeReflectConstruct) {
+      var NewTarget = _getPrototypeOf(this).constructor;
+
+      result = Reflect.construct(Super, arguments, NewTarget);
+    } else {
+      result = Super.apply(this, arguments);
+    }
+
+    return _possibleConstructorReturn(this, result);
+  };
+}
+
+function _possibleConstructorReturn(self, call) {
+  if (call && (_typeof(call) === "object" || typeof call === "function")) {
+    return call;
+  } else if (call !== void 0) {
+    throw new TypeError("Derived constructors may only return object or undefined");
+  }
+
+  return _assertThisInitialized(self);
+}
+
+function _assertThisInitialized(self) {
+  if (self === void 0) {
+    throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
+  }
+
+  return self;
+}
+
+function _isNativeReflectConstruct() {
+  if (typeof Reflect === "undefined" || !Reflect.construct) return false;
+  if (Reflect.construct.sham) return false;
+  if (typeof Proxy === "function") return true;
+
+  try {
+    Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {}));
+    return true;
+  } catch (e) {
+    return false;
+  }
+}
+
+function _getPrototypeOf(o) {
+  _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) {
+    return o.__proto__ || Object.getPrototypeOf(o);
+  };
+  return _getPrototypeOf(o);
+}
+
+var __awaiter = undefined && undefined.__awaiter || function (thisArg, _arguments, P, generator) {
+  function adopt(value) {
+    return value instanceof P ? value : new P(function (resolve) {
+      resolve(value);
+    });
+  }
+
+  return new (P || (P = Promise))(function (resolve, reject) {
+    function fulfilled(value) {
+      try {
+        step(generator.next(value));
+      } catch (e) {
+        reject(e);
+      }
+    }
+
+    function rejected(value) {
+      try {
+        step(generator["throw"](value));
+      } catch (e) {
+        reject(e);
+      }
+    }
+
+    function step(result) {
+      result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected);
+    }
+
+    step((generator = generator.apply(thisArg, _arguments || [])).next());
+  });
+};
+
+
+
+
+
+var SelectedItem = /*#__PURE__*/function (_BaseClass) {
+  _inherits(SelectedItem, _BaseClass);
+
+  var _super = _createSuper(SelectedItem);
+
+  function SelectedItem() {
+    var _this;
+
+    _classCallCheck(this, SelectedItem);
+
+    _this = _super.call(this);
+
+    _this.createComponents();
+
+    _this.createClass();
+
+    var _location = location,
+        pathname = _location.pathname;
+    return _this;
+  }
+
+  _createClass(SelectedItem, [{
+    key: "createComponents",
+    value: function createComponents() {
+      this.detailsContainer = this.$(".details-container");
+      this.detailsImageContainer = document.createElement("div"); //this.$(".details-image-container")
+
+      this.detailsButtonBack = document.createElement("button"); //this.$(".details-button-back")
+
+      this.detailsIconback = document.createElement("img"); //this.$(".details-icon-back")
+
+      this.detailsProductName = document.createElement("h2"); //this.$(".details-product-name")
+
+      this.detailsProductAmount = document.createElement("p"); //this.$(".details-product-amount")
+
+      this.detailsProductDescription = document.createElement("h4"); //this.$(".details-product-description")
+
+      this.detailsFooterBottoms = document.createElement("div"); //this.$(".details-footer-bottoms")
+
+      this.detailsButtonRoundedActionAdd = document.createElement("button"); //this.$(".details-button-rounded-action")
+
+      this.detailsQtd = document.createElement("span"); //this.$(".details-qtd")
+
+      this.detailsButtonRoundedActionRem = document.createElement("button");
+      this.detailsButtonConfirm = document.createElement("button"); //this.$(".details-button-confirm")
+    }
+  }, {
+    key: "createClass",
+    value: function createClass() {
+      this.detailsButtonBack.classList.add("details-button-back");
+      this.detailsImageContainer.classList.add("details-image-container");
+      this.detailsIconback.classList.add("details-icon-back");
+      this.detailsProductName.classList.add("details-product-name");
+      this.detailsProductAmount.classList.add("details-product-amount");
+      this.detailsProductDescription.classList.add("details-product-description");
+      this.detailsFooterBottoms.classList.add("details-footer-bottoms");
+      this.detailsButtonRoundedActionRem.classList.add("details-button-rounded-action");
+      this.detailsButtonRoundedActionRem.classList.add("details-button-rounded-action-rem");
+      this.detailsQtd.classList.add("details-qtd");
+      this.detailsButtonRoundedActionAdd.classList.add("details-button-rounded-action");
+      this.detailsButtonRoundedActionAdd.classList.add("details-button-rounded-action-add");
+      this.detailsButtonConfirm.classList.add("details-button-confirm");
+    }
+  }, {
+    key: "execute",
+    value: function execute() {
+      return __awaiter(this, void 0, void 0, /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee() {
+        var items, response, item;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                items = window.fillVariables.items;
+                _context.next = 3;
+                return fetch("/api/Item/Show/".concat((0,_utils_getIdUrl__WEBPACK_IMPORTED_MODULE_4__.getIdUrl)()));
+
+              case 3:
+                response = _context.sent;
+                _context.next = 6;
+                return response.json();
+
+              case 6:
+                item = _context.sent;
+                this.detailsIconback.setAttribute("src", "/images/icon-back.png");
+                this.detailsButtonBack.appendChild(this.detailsIconback);
+                this.detailsButtonBack.addEventListener("click", function () {
+                  location.href = "/product";
+                });
+                this.detailsImageContainer.style.backgroundImage = "url(".concat(item.Image, ")");
+                this.detailsImageContainer.appendChild(this.detailsButtonBack);
+                this.detailsButtonRoundedActionRem.textContent = "-";
+                this.detailsFooterBottoms.appendChild(this.detailsButtonRoundedActionRem);
+                this.detailsQtd.textContent = "1";
+                this.detailsFooterBottoms.appendChild(this.detailsQtd);
+                this.detailsButtonRoundedActionAdd.textContent = "+";
+                this.detailsFooterBottoms.appendChild(this.detailsButtonRoundedActionAdd);
+                this.detailsButtonConfirm.textContent = "Adicionar";
+                this.detailsFooterBottoms.appendChild(this.detailsButtonConfirm);
+                this.detailsContainer.appendChild(this.detailsImageContainer);
+                this.detailsProductName.textContent = item.Name;
+                this.detailsContainer.appendChild(this.detailsProductName);
+                this.detailsProductAmount.textContent = item.Amount;
+                this.detailsContainer.appendChild(this.detailsProductAmount);
+                this.detailsProductDescription.textContent = item.Description;
+                this.detailsContainer.appendChild(this.detailsProductDescription);
+                this.detailsContainer.appendChild(this.detailsFooterBottoms);
+                new _AddToCard__WEBPACK_IMPORTED_MODULE_2__.AddToCard(new _ControlAmountItem__WEBPACK_IMPORTED_MODULE_3__.ControlAmountItem()).execute();
+
+              case 29:
+              case "end":
+                return _context.stop();
+            }
+          }
+        }, _callee, this);
+      }));
+    }
+  }]);
+
+  return SelectedItem;
+}(_BaseClass__WEBPACK_IMPORTED_MODULE_1__.BaseClass);
+
+/***/ }),
+
 /***/ "./resources/ts/pages/product-details/index.ts":
 /*!*****************************************************!*\
   !*** ./resources/ts/pages/product-details/index.ts ***!
@@ -1824,12 +2342,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "productDetails": () => (/* binding */ productDetails)
 /* harmony export */ });
-/* harmony import */ var _AddToCard__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./AddToCard */ "./resources/ts/pages/product-details/AddToCard.ts");
-/* harmony import */ var _ControlAmountItem__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ControlAmountItem */ "./resources/ts/pages/product-details/ControlAmountItem.ts");
-
+/* harmony import */ var _SelectedItem__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./SelectedItem */ "./resources/ts/pages/product-details/SelectedItem.ts");
 
 var productDetails = function productDetails() {
-  new _AddToCard__WEBPACK_IMPORTED_MODULE_0__.AddToCard(new _ControlAmountItem__WEBPACK_IMPORTED_MODULE_1__.ControlAmountItem()).execute();
+  new _SelectedItem__WEBPACK_IMPORTED_MODULE_0__.SelectedItem().execute();
 };
 
 /***/ }),
@@ -2649,6 +3165,25 @@ var products = function products() {
 
 /***/ }),
 
+/***/ "./resources/ts/utils/getIdUrl.ts":
+/*!****************************************!*\
+  !*** ./resources/ts/utils/getIdUrl.ts ***!
+  \****************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "getIdUrl": () => (/* binding */ getIdUrl)
+/* harmony export */ });
+var getIdUrl = function getIdUrl() {
+  var _location = location,
+      pathname = _location.pathname;
+  return parseInt(pathname.split("/")[pathname.split("/").length - 1]);
+};
+
+/***/ }),
+
 /***/ "./resources/ts/utils/hasChildren.ts":
 /*!*******************************************!*\
   !*** ./resources/ts/utils/hasChildren.ts ***!
@@ -3179,21 +3714,121 @@ var __webpack_exports__ = {};
   !*** ./resources/ts/app.ts ***!
   \*****************************/
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _pages_body__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./pages/body */ "./resources/ts/pages/body/index.ts");
-/* harmony import */ var _pages_footer__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./pages/footer */ "./resources/ts/pages/footer/index.ts");
-/* harmony import */ var _pages_header__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./pages/header */ "./resources/ts/pages/header/index.ts");
-/* harmony import */ var _pages_product__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./pages/product */ "./resources/ts/pages/product/index.ts");
-/* harmony import */ var _pages_product_details__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./pages/product-details */ "./resources/ts/pages/product-details/index.ts");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _pages_body__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./pages/body */ "./resources/ts/pages/body/index.ts");
+/* harmony import */ var _pages_cart__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./pages/cart */ "./resources/ts/pages/cart/index.ts");
+/* harmony import */ var _pages_footer__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./pages/footer */ "./resources/ts/pages/footer/index.ts");
+/* harmony import */ var _pages_header__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./pages/header */ "./resources/ts/pages/header/index.ts");
+/* harmony import */ var _pages_product__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./pages/product */ "./resources/ts/pages/product/index.ts");
+/* harmony import */ var _pages_product_details__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./pages/product-details */ "./resources/ts/pages/product-details/index.ts");
+
+
+var __awaiter = undefined && undefined.__awaiter || function (thisArg, _arguments, P, generator) {
+  function adopt(value) {
+    return value instanceof P ? value : new P(function (resolve) {
+      resolve(value);
+    });
+  }
+
+  return new (P || (P = Promise))(function (resolve, reject) {
+    function fulfilled(value) {
+      try {
+        step(generator.next(value));
+      } catch (e) {
+        reject(e);
+      }
+    }
+
+    function rejected(value) {
+      try {
+        step(generator["throw"](value));
+      } catch (e) {
+        reject(e);
+      }
+    }
+
+    function step(result) {
+      result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected);
+    }
+
+    step((generator = generator.apply(thisArg, _arguments || [])).next());
+  });
+};
 
 
 
 
 
-window.header = _pages_header__WEBPACK_IMPORTED_MODULE_2__.header;
-window.body = _pages_body__WEBPACK_IMPORTED_MODULE_0__.body;
-window.products = _pages_product__WEBPACK_IMPORTED_MODULE_3__.products;
-window.productDetails = _pages_product_details__WEBPACK_IMPORTED_MODULE_4__.productDetails;
-window.footer = _pages_footer__WEBPACK_IMPORTED_MODULE_1__.footer;
+
+
+
+window.loadItems = function () {
+  return __awaiter(void 0, void 0, void 0, /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee() {
+    var response, items;
+    return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
+      while (1) {
+        switch (_context.prev = _context.next) {
+          case 0:
+            _context.next = 2;
+            return fetch("/api/Item/Show");
+
+          case 2:
+            response = _context.sent;
+            _context.next = 5;
+            return response.json();
+
+          case 5:
+            items = _context.sent;
+            window.fillVariables = Object.assign(Object.assign({}, window.fillVariables), {
+              items: items
+            });
+
+          case 7:
+          case "end":
+            return _context.stop();
+        }
+      }
+    }, _callee);
+  }));
+};
+
+window.loadCategories = function () {
+  return __awaiter(void 0, void 0, void 0, /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee2() {
+    var response, categories;
+    return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee2$(_context2) {
+      while (1) {
+        switch (_context2.prev = _context2.next) {
+          case 0:
+            _context2.next = 2;
+            return fetch("/api/CategoryItem/ShowTree");
+
+          case 2:
+            response = _context2.sent;
+            _context2.next = 5;
+            return response.json();
+
+          case 5:
+            categories = _context2.sent;
+            window.fillVariables = Object.assign(Object.assign({}, window.fillVariables), {
+              categories: categories
+            });
+
+          case 7:
+          case "end":
+            return _context2.stop();
+        }
+      }
+    }, _callee2);
+  }));
+};
+
+window.header = _pages_header__WEBPACK_IMPORTED_MODULE_4__.header;
+window.body = _pages_body__WEBPACK_IMPORTED_MODULE_1__.body;
+window.products = _pages_product__WEBPACK_IMPORTED_MODULE_5__.products;
+window.productDetails = _pages_product_details__WEBPACK_IMPORTED_MODULE_6__.productDetails;
+window.footer = _pages_footer__WEBPACK_IMPORTED_MODULE_3__.footer;
+window.cart = _pages_cart__WEBPACK_IMPORTED_MODULE_2__.cart;
 })();
 
 /******/ })()

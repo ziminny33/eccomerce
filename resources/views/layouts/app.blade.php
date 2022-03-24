@@ -37,9 +37,11 @@
 <script type="text/javascript" defer>
 
     window.fillVariables = {
-        isDefaultNavigation:@json($isDefaultNavigation->allow)
+        ...window.fillVariables,
+        isDefaultNavigation:@json($isDefaultNavigation->allow),
+        themeColor: @json($envs->themeColor) ,
+        isMobile: @json($envs->isMobile)
     }
-
        window.body()
 
 </script>

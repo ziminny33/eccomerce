@@ -14,7 +14,7 @@ export class AmountItemsCard extends BaseClass {
     }
 
     public execute() {
-        if(this.getitems()) {
+        if(this.getitems() && !window.fillVariables.isMobile) {
             this.badge.style.display = "flex"
             this.badge.textContent = String(this.getitems().length)
         }

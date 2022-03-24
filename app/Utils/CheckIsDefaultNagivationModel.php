@@ -17,7 +17,9 @@ class CheckIsDefaultNagivationModel implements ContractComposer {
     public function run():CheckIsDefaultNagivationModel  {
 
         $allowRoutes = [
-            'list-products'
+            'list-products',
+            'cart',
+            'about' 
         ];
 
         $routename = Route::currentRouteName();
