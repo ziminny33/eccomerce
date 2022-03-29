@@ -9,12 +9,12 @@ export class AmountItemsCard extends BaseClass {
 
     constructor() {
         super()
-        this.badge = this.$(".global-footer-total-items-cart")
+        this.badge = this.$(".global-header-total-items-cart")
         
     }
 
     public execute() {
-        if(this.getitems() && !window.fillVariables.isMobile) {
+        if(this.getitems() && this.badge != null) {
             this.badge.style.display = "flex"
             this.badge.textContent = String(this.getitems().length)
         }

@@ -1,8 +1,11 @@
+import { itemLocalStorageItems } from './../../utils/localstorageVars';
 import { ItemShow } from './../../interfaces/ItemShow';
 import { BaseClass } from "../BaseClass"
 import { AddToCard } from './AddToCard';
 import { ControlAmountItem } from './ControlAmountItem';
 import { getIdUrl } from '../../utils/getIdUrl';
+import { formatPrice } from '../../utils/formatPrice';
+ 
 
 export class SelectedItem extends BaseClass {
 
@@ -63,11 +66,13 @@ export class SelectedItem extends BaseClass {
     }
 
     public async execute() {
-        const {items} = window.fillVariables
-     
+ 
+        // const response = await fetch(`/api/Item/Show/${getIdUrl()}`)
+        // const item = await response.json() as ItemShow
 
-        const response = await fetch(`/api/Item/Show/${getIdUrl()}`)
-        const item = await response.json() as ItemShow
+        const items = JSON.parse(localStorage.getItem(itemLocalStorageItems)) as ItemShow[]
+        const item = items.find( (i) => i.Id == getIdUrl())
+
 
         this.detailsIconback.setAttribute("src","/images/icon-back.png")
         this.detailsButtonBack.appendChild(this.detailsIconback)
@@ -98,7 +103,7 @@ export class SelectedItem extends BaseClass {
         this.detailsProductName.textContent = item.Name
         this.detailsContainer.appendChild(this.detailsProductName)
 
-        this.detailsProductAmount.textContent = item.Amount
+        this.detailsProductAmount.textContent = formatPrice(parseFloat(item.Amount))  
         this.detailsContainer.appendChild(this.detailsProductAmount)
 
         this.detailsProductDescription.textContent = item.Description

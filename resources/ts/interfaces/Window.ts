@@ -5,7 +5,6 @@ export {};
 
  interface Params {
     categories:ShowTree, 
-    items:ItemShow[],
     themeColor:string
     isMobile:boolean
     isDefaultNavigation:boolean

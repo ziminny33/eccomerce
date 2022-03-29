@@ -16,7 +16,8 @@ header {
         // HEADER FOR MOBILE
 
         &-header-left {
-            margin-left: 4px;
+            margin-left: 4px;   
+            height: 100%;
         }
         &-header-center-text {
             font-family: "ProximaNovaSemiBold";
@@ -27,6 +28,13 @@ header {
             margin-right: 4px;
         }
         // HEADER FOR WEB
+
+        &-header-left-container {
+            display: flex;
+            align-items: center;
+            
+            flex: 1;
+        }
         &-header-logo {
             margin: 0 20px 0 8px;
             > img {
@@ -36,6 +44,43 @@ header {
         &-header-company-name {
             font-size: 18px;
             font-family: "ProximaNovaMedium";
+        }
+
+        &-header-content {
+
+            > button {
+                display: flex;
+                flex-direction: column; 
+                align-items: center;
+                > svg {
+                    fill: $colorGray__1;
+                }
+                > span {
+                    margin-top: 4px;
+                    font-size: 12px;
+                }
+            }
+        }
+        &-header-content-cart {
+            position: relative;
+            margin-right: 16px;
+        }
+
+        &-header-total-items-cart {
+            background-color: $colorRed__2;
+            color: $colorWhite;
+            width: 16px;
+            height: 16px;
+            border-radius: 8px;
+            position: absolute;
+            display: none;
+            justify-content: center;
+            align-items: center;
+            top: -5px;
+            right: 5px;
+            font-size: 12px;
+            font-family: "ProximaNovaSemiBold";
+            box-shadow: 1px 2px 4px rgba($color: $colorBlack, $alpha: .3);
         }
 
        

@@ -1,55 +1,62 @@
-import { CartItem } from './../../interfaces/Cartitem';
-import { ItemShow } from './../../interfaces/ItemShow';
-import { itemLocalstorage, itemLocalStorageItems } from "../../utils/localstorageVars";
-import { BaseClass } from "../BaseClass";
+import { CartItem } from "../interfaces/Cartitem";
+import { ItemShow } from "../interfaces/ItemShow";
+import { itemLocalstorage } from "../utils/localstorageVars";
 import { ControlAmountItem } from "./ControlAmountItem";
-import { getIdUrl } from '../../utils/getIdUrl';
 
-export class AddToCard extends BaseClass {
+export class CartLocalStorage {
 
-    private controlAmountItem:ControlAmountItem;
-    private confirm:HTMLButtonElement;
-  
+     
 
-    constructor(controlAmountItem?:ControlAmountItem) {
-        super()
-        this.controlAmountItem = controlAmountItem
-        this.confirm = this.$('.details-button-confirm')
-        
-    }
+    private cartItems:CartItem[] = [] as CartItem[]
 
-    public execute() {
+    constructor(
+        public controlAmountItem:ControlAmountItem
+    ) {
         this.controlAmountItem.execute()
-        this.confirm.addEventListener("click", async () => {  
-            await this.additem(getIdUrl())
-            location.href = "/product"
-            
-        })
+        const storage = localStorage.getItem(itemLocalstorage)
+
+        if(storage) {
+            this.cartItems = JSON.parse(storage) as CartItem[] 
+        }
+
     }
 
+    public getItems():CartItem[] {
+        return this.cartItems
+    }
 
+    public getTotal():number {
+        return this.cartItems.length
+    }
 
-    public async additem(id:number) {
-        
-          
+    public getTotalPrice(cartItem:CartItem) {
+        return cartItem.total
+    }
+
+    public getAmount(cartItem:CartItem) {
+        return cartItem.amount
+    }
+
+    private setLocalstorageItem(cartItems:CartItem[]) {
+        localStorage.setItem(itemLocalstorage,JSON.stringify(cartItems))
+    }
+
+    public async addItem(id:number) {
+
         try {
              
             if(typeof id == "number") {
- 
-                const items = JSON.parse(localStorage.getItem(itemLocalStorageItems)) as ItemShow[]
-                const item = items.find( (i) => i.Id == id)
-                 
-                
+                const response = await fetch(`/api/Item/Show/${id}`)
+                const item = await response.json() as ItemShow
+               
                 // If main page add 1 un
                 const amount = this.controlAmountItem?.getAmount() ?? 1
-
-                 const getitemLocalstorage = localStorage.getItem(itemLocalstorage) 
+ 
+                 const cart = this.getItems()
 
                  // Exists item(s) cart
-                 if(getitemLocalstorage) {
-                     const cart = JSON.parse(getitemLocalstorage) as CartItem[]
-                
-                     
+                 if(cart) {
+  
                      // If exists selected item, add more quantity
                      const curerntCart = cart.find( i => i.item.Id == id)
                      if(curerntCart) {
@@ -67,7 +74,7 @@ export class AddToCard extends BaseClass {
                               curerntCart
                         ]
                          
-                        localStorage.setItem(itemLocalstorage,JSON.stringify(newCart))
+                        this.setLocalstorageItem(newCart)
                         return;
                      }
 
@@ -80,7 +87,7 @@ export class AddToCard extends BaseClass {
                         amount,
                         total
                     }]
-                    localStorage.setItem(itemLocalstorage,JSON.stringify(newCart))
+                    this.setLocalstorageItem(newCart)
 
                      
                     
@@ -90,22 +97,21 @@ export class AddToCard extends BaseClass {
                  const total = parseFloat(item.Amount) * amount 
                  
                  // Not exists items
-                 const cart:CartItem[] = [{
+                 const newCart:CartItem[] = [{
                     item,
                     amount,
                     total
                 }]  
                   
                  
-              localStorage.setItem(itemLocalstorage,JSON.stringify(cart))
+              localStorage.setItem(itemLocalstorage,JSON.stringify(newCart))
 
             }
         } catch (error) {
             console.log(error);
             
         }
-    }
 
- 
+    }
 
 }

@@ -16,6 +16,9 @@ class EnvsModel implements ContractComposer {
     */
     public bool $isMobile;
 
+    public $params;
+ 
+
     /**
     *  ... outhers variables 
     */

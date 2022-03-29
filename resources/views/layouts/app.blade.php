@@ -25,12 +25,7 @@
     <main id="main">
         @yield('body')  
     </main>
-
-    @if ($isDefaultNavigation->allow)
-        <footer>
-            @yield('footer') 
-        </footer>
-    @endif
+ 
 
 </body>
 

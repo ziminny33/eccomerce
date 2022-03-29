@@ -1,6 +1,7 @@
 import { ItemCategories } from "../../interfaces/ItemCategories"
 import { ItemShow } from "../../interfaces/ItemShow"
 import { loadGrider } from "../../utils/loadGrider"
+import { itemLocalStorageItems } from "../../utils/localstorageVars"
 import { recursiveCategory } from "../../utils/recursiveCategory"
 import { totalCategoriesLength } from "../../utils/totalCategoriesLength"
 import ChangeOrder, {  SortByInterface } from "./ChangeOrder"
@@ -10,7 +11,8 @@ import FillItems from "./FillItems"
     window.loadGlider = loadGrider
  
     export const products = () => {
-                const { categories, items, themeColor ,isMobile } = window.fillVariables
+                const { categories,  } = window.fillVariables
+                const items = JSON.parse(localStorage.getItem(itemLocalStorageItems)) as ItemShow[]
                 const changeOrder = new ChangeOrder()
                 const fillItems = new FillItems()
              
@@ -68,8 +70,9 @@ import FillItems from "./FillItems"
                   const fill = (filter:ItemShow[]) => {
                         
                        console.log("DENTRO FILL");
-                
-                        filter.forEach( item => {
+ 
+                    
+                        filter?.forEach( item => {
                             fillItems.execute(item)
                         })
 

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ItemController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Js;
@@ -41,6 +42,8 @@ Route::prefix('Item')->group(function () {
          return response()->json($array['Data']['Data']);
    });
 
+
+
    Route::get('Show/{id}', function ($id) {
      function searchItem($id) {
         $strJsonFileItemShow = file_get_contents(__DIR__."/json/ItemShow.json");
@@ -57,3 +60,5 @@ Route::prefix('Item')->group(function () {
 
    });
 });
+
+Route::get('test', [ItemController::class,'test']);

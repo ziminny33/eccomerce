@@ -17,10 +17,7 @@
 @section('header')
   @include('layouts.header.index')
 @endsection
-
-@section('footer')
-  @include('layouts.footer')
-@endsection
+ 
 
 @push('script')
     <script type="text/javascript" defer>
@@ -30,7 +27,6 @@
     await window.loadCategories()  
     window.header()
     window.cart()
-    window.footer()
   })();
 
     </script>

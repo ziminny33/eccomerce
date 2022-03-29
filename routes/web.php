@@ -34,9 +34,5 @@ Route::prefix('cart')->group(function () {
      
 });
 
-Route::prefix('about')->group(function () {
-    Route::get('/', [AboutController::class,'index'])->name("about");
-     
-});
-
+ 
  
