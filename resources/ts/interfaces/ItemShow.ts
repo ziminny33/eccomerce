@@ -17,5 +17,6 @@ export interface ItemShow {
         Queue: string,
         Image:string,
         Delivered:string,
-        Description:string
+        Description:string,
+        CategoryName:string
 }

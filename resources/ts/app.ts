@@ -1,17 +1,23 @@
-import { itemLocalStorageToken, itemLocalStorageOrderId, itemLocalStorageItems } from './utils/localstorageVars';
+"strict"
+import { itemLocalStorageToken, itemLocalStorageOrderId, itemLocalStorageItems, itemLocalStorageCategories } from './utils/localstorageVars';
 import { body } from "./pages/body";
 import { cart } from "./pages/cart";
 import { header } from "./pages/header";
 import { products } from "./pages/product";
 import { productDetails } from "./pages/product-details";
+import { cartSuccess } from './pages/cart-success';
 
 export const baseUrl = "https://epservice.herokuapp.com/api/v1";
-const token = localStorage.getItem(itemLocalStorageToken)
-const orderId = localStorage.getItem(itemLocalStorageOrderId)
+ 
   
- window.loadItems = async () => {
+ window.loadItems = async (token:string,orderId:string) => {
+
+    localStorage.setItem(itemLocalStorageToken,token);
+    localStorage.setItem(itemLocalStorageOrderId,orderId);
 
 
+
+    
 
     try {
         const response = await fetch(`${baseUrl}/Item/ShowByQrCode/${orderId}`,{
@@ -22,13 +28,7 @@ const orderId = localStorage.getItem(itemLocalStorageOrderId)
              Authorization : `Bearer ${token}`,
             }
         }) 
-         const items =  await response.json()
-        console.log(items.Data.Data);
-
-        window.fillVariables = {
-            ...window.fillVariables,
-            // items:items.Data.Data || [],
-        }
+         const items = await response.json()
 
         localStorage.setItem(itemLocalStorageItems,JSON.stringify(items.Data.Data))
  
@@ -36,12 +36,10 @@ const orderId = localStorage.getItem(itemLocalStorageOrderId)
         console.log(error);
         
     }
-        
-
 
  }
 
-    window.loadCategories = async () => {
+    window.loadCategories = async (token:string,orderId:string) => {
         try {
 
             const response = await fetch(`${baseUrl}/CategoryItem/ShowTree`,{
@@ -55,10 +53,8 @@ const orderId = localStorage.getItem(itemLocalStorageOrderId)
              const categories = await response.json()
  
 
-             window.fillVariables = {
-                ...window.fillVariables,
-                categories:categories.Data.Data[0] ,
-            }
+            localStorage.setItem(itemLocalStorageCategories,JSON.stringify(categories.Data.Data[0]))
+            
              
             
         } catch (error) {
@@ -78,3 +74,4 @@ window.body = body
 window.products = products
 window.productDetails = productDetails
 window.cart = cart
+window.cartSuccess = cartSuccess

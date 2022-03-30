@@ -14,6 +14,10 @@
     @include('layouts.product.categories')
     @include('layouts.product.sub-section-order')
     @include('layouts.product.card-container')
+
+    <div class="global-loader-container">
+      <div class="global-loader-spinner"></div>
+    </div>
 @endsection
  
 
@@ -21,29 +25,38 @@
 
 @push('script')
     <script type="text/javascript" defer>
+  
  
- 
-    const orderId = @json($orderId);
-    const token = @json($token);
-    const themeColor = @json($themeColor);
-    const isMobile = @json($isMobile);
-
-    localStorage.setItem('@trem.digital.eccomerce:orderId',orderId);
-    localStorage.setItem('@trem.digital.eccomerce:token',token);
-    localStorage.setItem('@trem.digital.eccomerce:themeColor',themeColor);
-    localStorage.setItem('@trem.digital.eccomerce:isMobile',isMobile);
-
    
   ( async () => {
-    await window.loadItems() 
-    await window.loadCategories()
- 
-       
-    window.header()
 
-    // arquivo ts/product/app.js
-    window.loadGlider()
-    window.products()
+    localStorage.setItem('@trem.digital.eccomerce:themeColor',@json($themeColor));
+    localStorage.setItem('@trem.digital.eccomerce:isMobile',@json($isMobile));
+
+    const loader = document.querySelector(".global-loader-container")
+    
+    if(localStorage.getItem('@trem.digital.eccomerce:orderId') !== @json($orderId)) {
+       const sendToServer = localStorage.getItem('@trem.digital.eccomerce:sendeToServer')
+       if(sendToServer) {
+          localStorage.removeItem('@trem.digital.eccomerce:sendeToServer')
+       }
+    }
+
+    await Promise.all(
+      [ 
+       window.loadItems(@json($token),@json($orderId)) , 
+       window.loadCategories(@json($token),@json($orderId))
+      ])
+
+    loader.style.display = "none"
+       
+ 
+   window.header()
+
+  // arquivo ts/product/app.js
+   window.loadGlider()
+   window.products()
+ 
  
   })();
  

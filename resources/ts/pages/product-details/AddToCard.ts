@@ -1,6 +1,6 @@
 import { CartItem } from './../../interfaces/Cartitem';
 import { ItemShow } from './../../interfaces/ItemShow';
-import { itemLocalstorage, itemLocalStorageItems } from "../../utils/localstorageVars";
+import { itemLocalstorageCartItems, itemLocalStorageItems } from "../../utils/localstorageVars";
 import { BaseClass } from "../BaseClass";
 import { ControlAmountItem } from "./ControlAmountItem";
 import { getIdUrl } from '../../utils/getIdUrl';
@@ -43,7 +43,7 @@ export class AddToCard extends BaseClass {
                 // If main page add 1 un
                 const amount = this.controlAmountItem?.getAmount() ?? 1
 
-                 const getitemLocalstorage = localStorage.getItem(itemLocalstorage) 
+                 const getitemLocalstorage = localStorage.getItem(itemLocalstorageCartItems) 
 
                  // Exists item(s) cart
                  if(getitemLocalstorage) {
@@ -67,7 +67,7 @@ export class AddToCard extends BaseClass {
                               curerntCart
                         ]
                          
-                        localStorage.setItem(itemLocalstorage,JSON.stringify(newCart))
+                        localStorage.setItem(itemLocalstorageCartItems,JSON.stringify(newCart))
                         return;
                      }
 
@@ -80,7 +80,7 @@ export class AddToCard extends BaseClass {
                         amount,
                         total
                     }]
-                    localStorage.setItem(itemLocalstorage,JSON.stringify(newCart))
+                    localStorage.setItem(itemLocalstorageCartItems,JSON.stringify(newCart))
 
                      
                     
@@ -97,7 +97,7 @@ export class AddToCard extends BaseClass {
                 }]  
                   
                  
-              localStorage.setItem(itemLocalstorage,JSON.stringify(cart))
+              localStorage.setItem(itemLocalstorageCartItems,JSON.stringify(cart))
 
             }
         } catch (error) {

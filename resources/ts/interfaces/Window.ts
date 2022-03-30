@@ -4,7 +4,6 @@ import { ShowTree } from "./ShowTree";
 export {};
 
  interface Params {
-    categories:ShowTree, 
     themeColor:string
     isMobile:boolean
     isDefaultNavigation:boolean
@@ -19,8 +18,9 @@ declare global {
         loadGlider: () => void
         products:() => void
         productDetails:() => void
-        loadItems: () => void
-        loadCategories: () => void
+        loadItems: (token:string,orderId:string) => void
+        loadCategories: (token:string,orderId:string) => void
+        cartSuccess: () => void
         fillVariables:Params
     }
 }

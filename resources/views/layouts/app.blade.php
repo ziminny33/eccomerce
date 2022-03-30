@@ -31,6 +31,20 @@
 
 <script type="text/javascript" defer>
 
+// RETIRAR 
+// document.addEventListener('contextmenu', (event) => event.preventDefault()) 
+//     document.onkeydown = (event) => {
+//         if(event.keyCode === 123) {
+//             return false
+//         }
+
+//         if(event.ctrlKey && event.keyCode == 67) {
+//             return false
+//         }
+//     }
+
+ 
+
     window.fillVariables = {
         ...window.fillVariables,
         isDefaultNavigation:@json($isDefaultNavigation->allow),
@@ -40,6 +54,8 @@
        window.body()
 
 </script>
+
+
  
 @stack('script')
     

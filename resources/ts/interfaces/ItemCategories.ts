@@ -1,5 +1,5 @@
 export interface ItemCategories {
-    Id: number,
+    // Id: number,
     Name: string,
     children: ItemCategories[]
     ParentId?:number,

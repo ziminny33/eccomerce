@@ -1,9 +1,11 @@
 import { ItemCategories } from "../../interfaces/ItemCategories"
 import { ItemShow } from "../../interfaces/ItemShow"
+import { ShowTree } from "../../interfaces/ShowTree"
 import { loadGrider } from "../../utils/loadGrider"
-import { itemLocalStorageItems } from "../../utils/localstorageVars"
+import { itemLocalStorageCategories, itemLocalStorageItems } from "../../utils/localstorageVars"
 import { recursiveCategory } from "../../utils/recursiveCategory"
 import { totalCategoriesLength } from "../../utils/totalCategoriesLength"
+import { ButtonPayment } from "./ButtonPayment"
 import ChangeOrder, {  SortByInterface } from "./ChangeOrder"
 import FillItems from "./FillItems"
 
@@ -11,16 +13,20 @@ import FillItems from "./FillItems"
     window.loadGlider = loadGrider
  
     export const products = () => {
-                const { categories,  } = window.fillVariables
+                const storageCategories = localStorage.getItem(itemLocalStorageCategories)
+                const categories = JSON.parse(storageCategories) as ShowTree
                 const items = JSON.parse(localStorage.getItem(itemLocalStorageItems)) as ItemShow[]
                 const changeOrder = new ChangeOrder()
                 const fillItems = new FillItems()
-             
+                 
+                new ButtonPayment()
+                .create()
+                .addToContainer()
+                .make() 
 
                
-                let allIdsForShowItems:number[] = []
-                let container = document.querySelector(".product-container")
-       
+                let allIdsForShowItems:string[] = []
+                        
                 // Remove all items 
                    const removeAllItems = () => {
                        document.querySelectorAll(".product-cart-item-wrapper").forEach(element => {
@@ -39,9 +45,9 @@ import FillItems from "./FillItems"
                    itemCategoryArray().forEach(item => {
                        item.addEventListener("click", () => {
                                removeAllItems()
-                               const categoryId = item.getAttribute("data-id")
-                               searchPerCategory(parseInt(categoryId),false,true)
-                               categoriesChange(parseInt(categoryId))
+                               const categoryName = item.getAttribute("data-id")
+                               searchPerCategory(categoryName,false,true)
+                               categoriesChange(categoryName)
                        })
                        
                    })
@@ -51,15 +57,15 @@ import FillItems from "./FillItems"
               
                 let filter:ItemShow[]= [] as ItemShow[]
        
-                const searchPerCategory = (categoryId:number ,resetItems = false,rerenderClickBreak=false) => {
+                const searchPerCategory = (categoryName:string ,resetItems = false,rerenderClickBreak=false) => {
        
-                   const filterCategory = recursiveCategory(categories.ItemCategories, categoryId )
+                   const filterCategory = recursiveCategory(categories.ItemCategories, categoryName )
                    allIdsForShowItems = []
                    if(filterCategory && filterCategory.children) idCategoriesRecursive(filterCategory.children)
        
                   let itemsFiltered = items.filter( item => {
-                      return item.CategoryId ===   categoryId  ||
-                      allIdsForShowItems.find( (list) => item.CategoryId == list)
+                      return item.CategoryName ===   categoryName  ||
+                      allIdsForShowItems.find( (list) => item.CategoryName == list)
                   })
                   
                   totalCategoriesLength(resetItems ? items.length : itemsFiltered.length);
@@ -69,11 +75,13 @@ import FillItems from "./FillItems"
                  
                   const fill = (filter:ItemShow[]) => {
                         
-                       console.log("DENTRO FILL");
- 
+                     
                     
                         filter?.forEach( item => {
-                            fillItems.execute(item)
+                            fillItems
+                            .createElements()
+                            .addClass()
+                            .make(item)
                         })
 
                   }
@@ -109,20 +117,20 @@ import FillItems from "./FillItems"
        
                  const idCategoriesRecursive = (cat:ItemCategories[]) => {
                       
-                       return cat.reduce( (increment,category):Array<number> => {
-                           allIdsForShowItems.push(category.Id)
+                       return cat.reduce( (increment,category):Array<string> => {
+                           allIdsForShowItems.push(category.Name)
                            idCategoriesRecursive(category.children)
                            return allIdsForShowItems
                        },[] )
                  }
        
                 
-                const categoriesChange = (categoryId:number,resetAll = false,removeBreadcrumb = false) => {
+                const categoriesChange = (categoryName:string,resetAll = false,removeBreadcrumb = false) => {
                    const gliderContainer = document.querySelector("#product-glider-container")
                    
                    
                    
-                   const filterCategory = recursiveCategory(categories.ItemCategories,categoryId) 
+                   const filterCategory = recursiveCategory(categories.ItemCategories,categoryName) 
                 
                          
         
@@ -149,7 +157,7 @@ import FillItems from "./FillItems"
                           
                            categories.ItemCategories.forEach( item => {
                                let button = document.createElement("button")
-                               button.setAttribute("data-id",String(item.Id))
+                               button.setAttribute("data-id",String(item.Name))
                                button.classList.add("product-item")
                                button.innerHTML = item.Name
                                gliderContent.appendChild(button)
@@ -162,7 +170,7 @@ import FillItems from "./FillItems"
        
                             filterCategory.children.forEach( item => {
                                let button = document.createElement("button")
-                               button.setAttribute("data-id",String(item.Id))
+                               button.setAttribute("data-id",String(item.Name))
                                button.classList.add("product-item")
                                button.innerHTML = item.Name
                                gliderContent.appendChild(button)
@@ -184,7 +192,7 @@ import FillItems from "./FillItems"
                        if(!resetAll) {
                            const button = document.createElement("button")
                            button.classList.add("product-breadcrumb-button")
-                           button.setAttribute("data-breadcrumbs-id",String(category.Id))
+                           button.setAttribute("data-breadcrumbs-id",String(category.Name))
                            button.innerHTML = "&nbsp;/ "+category.Name
                            container?.appendChild(button)
                            
@@ -209,9 +217,9 @@ import FillItems from "./FillItems"
                     const [allCategories,...arrayButtons] = [...buttons]  
                    if(rerender) {
                        allCategories.addEventListener("click",() => {
-                       categoriesChange(0,true)
+                       categoriesChange('',true)
                        removeAllItems()
-                       searchPerCategory(0,true,true)
+                       searchPerCategory('',true,true)
                        totalCategoriesLength(items.length)
                     })
                    }
@@ -220,7 +228,7 @@ import FillItems from "./FillItems"
                     arrayButtons.forEach((button,index) => {
                        button.addEventListener("click" , () => {
                                if(arrayButtons.length -1 != index) {
-                                   const categoryId = button.getAttribute("data-breadcrumbs-id")
+                                   const categoryName = button.getAttribute("data-breadcrumbs-id")
        
                                    arrayButtons.forEach((element,indexElement) => {
                                           if(index < indexElement) {
@@ -230,8 +238,8 @@ import FillItems from "./FillItems"
                                         
                                    })
                                    removeAllItems()
-                                   categoriesChange(parseInt(categoryId),false,true)
-                                   searchPerCategory(parseInt(categoryId))
+                                   categoriesChange(categoryName,false,true)
+                                   searchPerCategory(categoryName)
                                   
                                }
                           
@@ -239,8 +247,8 @@ import FillItems from "./FillItems"
                     });
                 }
                 breadCrumbsEvent()
-                categoriesChange(0,true)
-                searchPerCategory(0,true)
+                categoriesChange('',true)
+                searchPerCategory('',true)
 }
 
  

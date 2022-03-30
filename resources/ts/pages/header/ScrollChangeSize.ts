@@ -1,3 +1,5 @@
+import { ShowTree } from "../../interfaces/ShowTree";
+import { itemLocalStorageCategories } from "../../utils/localstorageVars";
 import { BaseClass } from "../BaseClass";
 
 export class ScrollChangeSize extends BaseClass  {
@@ -40,7 +42,9 @@ export class ScrollChangeSize extends BaseClass  {
 
     constructor() {
         super()
-        const { categories } = window.fillVariables
+        const storageItems = localStorage.getItem(itemLocalStorageCategories) 
+        let categories:ShowTree = JSON.parse(storageItems) as ShowTree
+
         this.textHeader = this.$(".global-header-company-name") as HTMLDivElement
         this.main = this.$("main") as HTMLElement
         this.containerLogo = this.$(".global-header-logo") as HTMLDivElement

@@ -2,6 +2,7 @@ import { ItemShow } from "../../interfaces/ItemShow";
 import { ShowTree } from "../../interfaces/ShowTree";
 import { formatPrice } from "../../utils/formatPrice";
 import { limitLetters } from "../../utils/limitLetters";
+import { itemLocalStorageCategories } from "../../utils/localstorageVars";
 import { BaseClass } from "../BaseClass";
 import { AmountItemsCard } from "../header/AmountItemsCard";
  
@@ -26,19 +27,67 @@ export default class FillItems extends BaseClass {
        *  @var showTree
        *  Current item
        */
-      private showTree:ShowTree;
 
       private addToCard:AddToCard;
 
+      private wrapper:HTMLDivElement  
+
+      private content:HTMLDivElement
+
+      private imageContainer:HTMLDivElement
+
+      private innerImage:HTMLImageElement
+
+      private name:HTMLDivElement
+
+      private description:HTMLDivElement
+
+      private price:HTMLDivElement
+
+      private delivered:HTMLDivElement
+
+      private cartAbsoluteRight:HTMLButtonElement
+
+      private innerImageCart:HTMLImageElement
+
+
       private amountItemsCard:AmountItemsCard
+      
 
         constructor() {
             super()
+  
             this.themeColor = window.fillVariables.themeColor;
-            this.showTree = window.fillVariables.categories
             this.container = this.$(".product-container")
             this.addToCard = new AddToCard()
             this.amountItemsCard = new AmountItemsCard()
+       }
+
+       public createElements():FillItems {
+
+          this.wrapper = document.createElement("div")
+          this.content = document.createElement("div")
+          this.imageContainer = document.createElement("div")
+          this.innerImage = document.createElement("img")
+          this.name = document.createElement("div")
+          this.description = document.createElement("div")
+          this.price = document.createElement("div")
+          this.delivered = document.createElement("div")
+          this.cartAbsoluteRight = document.createElement("button")
+          this.innerImageCart = document.createElement("img")
+
+          return this
+       }
+
+       public addClass():FillItems {
+          this.imageContainer.classList.add('product-cart-image')
+          this.name.classList.add('product-cart-name')
+          this.description.classList.add('product-cart-description-small')
+          this.price.classList.add('product-cart-price')
+          this.delivered.classList.add('product-cart-delivered')
+          this.cartAbsoluteRight.classList.add('product-cart-add-item')
+          
+          return this
        }
 
       
@@ -47,63 +96,63 @@ export default class FillItems extends BaseClass {
      *  @return void
      *  Fill all items in screen
      */
-    public execute(item:ItemShow) {
+    public make(item:ItemShow) {
      
       
-            const wrapper = document.createElement("div") as HTMLDivElement
-            wrapper.classList.add('product-cart-item-wrapper')
-            wrapper.style.borderTopColor = this.themeColor
+      
+      this.wrapper.classList.add('product-cart-item-wrapper')
+      this.wrapper.style.borderTopColor = this.themeColor
            
 
-            const content = document.createElement("div") as HTMLDivElement
-            content.classList.add('product-cart-item')
+             
+      this.content.classList.add('product-cart-item')
             
-            wrapper.appendChild(content)
+            this.wrapper.appendChild(this.content)
         
-            ClickToDetailsProduct.execute(content,item);
+            ClickToDetailsProduct.execute(this.content,item);
 
-            let image = document.createElement("div")
-            image.classList.add('product-cart-image')
-            let innerImage = document.createElement("img")
-            innerImage.setAttribute("src",item.Image || '/images/no-image.png')
-            image.appendChild(innerImage)
-            content.appendChild(image)
-
-            let name = document.createElement("div")
-            name.classList.add('product-cart-name')
-            name.textContent = item.Name
-            content.appendChild(name)
-
-            let description = document.createElement("div")
-            description.classList.add('product-cart-description-small')
-            description.innerHTML = limitLetters(item.Description,100)
-            content.appendChild(description)
-
-            let price = document.createElement("div")
+             
             
-            price.classList.add('product-cart-price')
-            price.innerHTML = formatPrice(parseFloat(item.Amount))
-            content.appendChild(price)
+ 
+            this.innerImage.setAttribute("src",item.Image || '/images/no-image.png')
+            this.imageContainer.appendChild(this.innerImage)
+            this.content.appendChild(this.imageContainer)
 
-            let delivered = document.createElement("div")
-            delivered.classList.add('product-cart-delivered')
-            delivered.innerHTML = "<span>Entregue por:</span> "+item.Delivered
-            content.appendChild(delivered)
+           
+            
+            this.name.textContent = item.Name
+            this.content.appendChild(this.name)
 
-            let cartAbsoluteRight = document.createElement("button")
-            cartAbsoluteRight.classList.add('product-cart-add-item')
-            cartAbsoluteRight.style.backgroundColor = this.themeColor 
-            cartAbsoluteRight.addEventListener("click", async () => {
+             
+            
+            this.description.innerHTML = limitLetters(item.Description,100)
+            this.content.appendChild(this.description)
+
+            
+            
+            
+            this.price.innerHTML = formatPrice(parseFloat(item.Amount))
+            this.content.appendChild(this.price)
+
+            
+            
+            this.delivered.innerHTML = "<span>Entregue por:</span> "+item.Delivered
+            this.content.appendChild(this.delivered)
+
+            
+            
+            this.cartAbsoluteRight.style.backgroundColor = this.themeColor 
+            this.cartAbsoluteRight.addEventListener("click", async () => {
               await this.addToCard.additem(item.Id)
               this.amountItemsCard.execute()
             })
  
        
-            let innerImageCart = document.createElement("img")
-            innerImageCart.setAttribute("src",'/images/cart.svg')
-            cartAbsoluteRight.appendChild(innerImageCart)
-            wrapper.appendChild(cartAbsoluteRight)
+          
+            this.innerImageCart.setAttribute("src",'/images/cart.svg')
+            this.cartAbsoluteRight.appendChild(this.innerImageCart)
+            this.wrapper.appendChild(this.cartAbsoluteRight)
 
-            this.container?.appendChild(wrapper)
+            this.container?.appendChild(this.wrapper)
     }
 }

@@ -1,7 +1,7 @@
 import { formatPrice } from './../../utils/formatPrice';
 import { CartItem } from "../../interfaces/Cartitem";
 import { limitLetters } from "../../utils/limitLetters";
-import { itemLocalstorage } from "../../utils/localstorageVars";
+import { itemLocalstorageCartItems } from "../../utils/localstorageVars";
 import { BaseClass } from "../BaseClass";
 import { FinalizeCart } from './FinalizeCart';
 
@@ -195,7 +195,6 @@ export class CartList extends BaseClass{
         this.cartTaxContainer.appendChild(this.cartTaxPrice)
 
         this.cartSubTotalName.textContent = "Subtotal"
-        this.cartSubTotalPrice.textContent = "R$ 50.00"
         this.cartSubTotalContainer.appendChild(this.cartSubTotalName)
         this.cartSubTotalContainer.appendChild(this.cartSubTotalPrice)
 
@@ -209,7 +208,7 @@ export class CartList extends BaseClass{
         this.cartFinalizeButton.textContent = "Finalizar Pedido"
 
         this.cartFinalizeButton.addEventListener("click", () => {
-                new FinalizeCart().execute()
+                new FinalizeCart().execute(this.cartFinalizeButton)
         })
 
         
@@ -217,7 +216,7 @@ export class CartList extends BaseClass{
     }
 
     private amountSumCalc() {
-        const storage = localStorage.getItem(itemLocalstorage)
+        const storage = localStorage.getItem(itemLocalstorageCartItems)
 
         if(storage) {
 
@@ -235,6 +234,7 @@ export class CartList extends BaseClass{
             },0)
 
             this.cartTotalPrice.textContent = formatPrice(total)
+            this.cartSubTotalPrice.textContent = formatPrice(total)
         }
     }
 
@@ -245,7 +245,7 @@ export class CartList extends BaseClass{
         
         this.cartNoExistsCartListMessage = document.createElement("div")
 
-        const storage = localStorage.getItem(itemLocalstorage)  
+        const storage = localStorage.getItem(itemLocalstorageCartItems)  
         const items = JSON.parse(storage || '[]') as CartItem[]
         console.log(items);
 
@@ -284,7 +284,7 @@ export class CartList extends BaseClass{
            });
           
            this.cartAmountSumContainer.remove()
-            localStorage.removeItem(itemLocalstorage)
+            localStorage.removeItem(itemLocalstorageCartItems)
             this.noExistsItemListMessage();
              
         })
@@ -350,7 +350,7 @@ export class CartList extends BaseClass{
  
 
     public make() {
-        const storage = localStorage.getItem(itemLocalstorage)
+        const storage = localStorage.getItem(itemLocalstorageCartItems)
 
         if(storage) {
 
@@ -371,7 +371,7 @@ export class CartList extends BaseClass{
     private addToCart(cartItem:CartItem ,total:number,totalPrice:HTMLDivElement) {
 
 
-        const storage = localStorage.getItem(itemLocalstorage)
+        const storage = localStorage.getItem(itemLocalstorageCartItems)
 
         if(storage) {
             const itemsLocalStorage = JSON.parse(storage) as CartItem[]
@@ -389,7 +389,7 @@ export class CartList extends BaseClass{
                 itemSelected
             ]
 
-            localStorage.setItem(itemLocalstorage,JSON.stringify(newCart))
+            localStorage.setItem(itemLocalstorageCartItems,JSON.stringify(newCart))
             totalPrice.textContent = "Total "+formatPrice(itemSelected.total)
 
         }

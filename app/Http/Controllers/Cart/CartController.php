@@ -10,4 +10,8 @@ class CartController extends Controller
     public function index() {
         return View("cart.show");
     }
+
+    public function success() {
+        return View("cart.success");
+    }
 }

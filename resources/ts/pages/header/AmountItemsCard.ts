@@ -1,5 +1,5 @@
 import { ItemShow } from "../../interfaces/ItemShow";
-import { itemLocalstorage } from "../../utils/localstorageVars";
+import { itemLocalstorageCartItems } from "../../utils/localstorageVars";
 import { BaseClass } from "../BaseClass";
 
 export class AmountItemsCard extends BaseClass {
@@ -22,7 +22,7 @@ export class AmountItemsCard extends BaseClass {
     }
 
     private getitems():ItemShow[] {
-        const storage = localStorage.getItem(itemLocalstorage)
+        const storage = localStorage.getItem(itemLocalstorageCartItems)
         let items:ItemShow[]
         if(storage) {
              items = JSON.parse(storage) as ItemShow[]

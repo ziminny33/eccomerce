@@ -1,6 +1,6 @@
 import { CartItem } from "../interfaces/Cartitem";
 import { ItemShow } from "../interfaces/ItemShow";
-import { itemLocalstorage } from "../utils/localstorageVars";
+import { itemLocalstorageCartItems } from "../utils/localstorageVars";
 import { ControlAmountItem } from "./ControlAmountItem";
 
 export class CartLocalStorage {
@@ -13,7 +13,7 @@ export class CartLocalStorage {
         public controlAmountItem:ControlAmountItem
     ) {
         this.controlAmountItem.execute()
-        const storage = localStorage.getItem(itemLocalstorage)
+        const storage = localStorage.getItem(itemLocalstorageCartItems)
 
         if(storage) {
             this.cartItems = JSON.parse(storage) as CartItem[] 
@@ -38,7 +38,7 @@ export class CartLocalStorage {
     }
 
     private setLocalstorageItem(cartItems:CartItem[]) {
-        localStorage.setItem(itemLocalstorage,JSON.stringify(cartItems))
+        localStorage.setItem(itemLocalstorageCartItems,JSON.stringify(cartItems))
     }
 
     public async addItem(id:number) {
@@ -104,7 +104,7 @@ export class CartLocalStorage {
                 }]  
                   
                  
-              localStorage.setItem(itemLocalstorage,JSON.stringify(newCart))
+              localStorage.setItem(itemLocalstorageCartItems,JSON.stringify(newCart))
 
             }
         } catch (error) {

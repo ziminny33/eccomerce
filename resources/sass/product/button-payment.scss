@@ -1,0 +1,29 @@
+.#{$prefix} {
+    &-button-payment-div-absolute {
+
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        
+        font-family: "ProximaNovaMedium";
+        background-color: $colorWhite;
+        box-shadow: 1px 3px 8px rgba($color: #000000, $alpha: .2);
+        display: none;
+        align-items: center;
+        justify-content: center;
+        z-index: 99;
+        width: 100%;
+        padding: 16px;
+        
+
+    }
+    &-button-payment-absolute {
+        padding: 16px;
+        color: $colorWhite;
+        font-family: "ProximaNovaMedium";
+        background-color: $colorPrimary;
+        width: 100%;
+        text-align: center;
+        border-radius: 8px;
+    }
+}
